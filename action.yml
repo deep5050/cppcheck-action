@@ -1,4 +1,4 @@
-name: cppcheck
+name: cppcheck-action
 description: 'Run security checks for C/C++ files and push report back to master'
 author: 'deep5050'
 branding:
