@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: autopy-lot 
+      - name: cppcheck
         uses: deep5050/cppcheck-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
