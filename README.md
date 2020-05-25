@@ -1,4 +1,7 @@
 # cppcheck-action
+[![HitCount](http://hits.dwyl.com/deep5050/cppcheck-action.svg)](http://hits.dwyl.com/deep5050/cppcheck-action)
+![Downloads](https://img.shields.io/github/downloads/deep5050/cppcheck-action/total?style=flat-square)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/deep5050/cppcheck-action?style=flat-square)
 
 A github action to perform C/C++ code analysis using popular cppcheck tool.
 
