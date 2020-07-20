@@ -97,7 +97,7 @@ def prepare_command():
 
 def run_cppcheck():
     global command
-    command = command + f" --output-file={out_file} . 2>cppcheck_error.txt"
+    command = command + f" --output-file={out_file} ."
     sp.call(command, shell=True)
 
 
@@ -111,7 +111,7 @@ def commit_changes():
     sp.call(set_user, shell=True)
 
     git_checkout = f'git checkout {TARGET_BRANCH}'
-    git_add = f'git add {out_file} cppcheck_error.txt'
+    git_add = f'git add {out_file}'
     git_commit = 'git commit -m "cppcheck report added/updated"'
     print('Committing reports.......')
 
