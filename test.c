@@ -81,7 +81,7 @@ void *service_clients(void *arguments)
     struct args *p_args = (struct args *)arguments;
 
     /**
-     * copy the client_fd locally as creation process ( genrerates new fd) of 
+     * copy the client_fd locally as creation process ( genrerates new fd) of
      * a new thread will chage the value pointed by *argument
      */
 
