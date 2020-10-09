@@ -36,6 +36,9 @@ jobs:
         uses: deep5050/cppcheck-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
+          github_user_name: "<your github username>"
+          github_email: "<github email>"
+          commit_msg: "<optional commit message>"
 
 ```
 ### Advanced configuration
@@ -54,6 +57,9 @@ jobs:
         uses: deep5050/cppcheck-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
+          github_user_name: "<your github username>"
+          github_email: "<github email>"
+          commit_msg: "<optional commit message>"
           check_library:
           skip_preprocessor:
           enable:
