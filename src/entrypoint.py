@@ -37,6 +37,10 @@ MAX_CTU_DEPTH = os.environ['INPUT_MAX_CTU_DEPTH'] or 'disable'
 OUTPUT_FILE = os.environ['INPUT_OUTPUT_FILE'] or 'cppcheck_report.txt'
 PLATFORM = os.environ['INPUT_PLATFORM'] or 'disable'
 
+GITHUB_USER = os.environ['INPUT_GITHUB_USER'] or 'cppcheck-action'
+GITHUB_EMAIL = os.environ['INPUT_GITHUB_EMAIL'] or 'cppcheck-action@master'
+COMMIT_MSG = os.environ['INPUT_COMMIT_MSG'] or 'cppcheck report added or updated'
+
 command = ""
 
 
@@ -104,15 +108,16 @@ def run_cppcheck():
 def commit_changes():
     """Commits changes.
     """
-    set_email = 'git config --local user.email "flawfinder-action@master"'
-    set_user = 'git config --local user.name "flawfinder-action"'
+    set_email = f'git config --local  user.email {GITHUB_EMAIL}'
+    set_user = f'git config --local  user.name {GITHUB_USER}'
 
     sp.call(set_email, shell=True)
     sp.call(set_user, shell=True)
 
     git_checkout = f'git checkout {TARGET_BRANCH}'
     git_add = f'git add {out_file}'
-    git_commit = 'git commit -m "cppcheck report added/updated"'
+    git_commit = f'git commit -m  {COMMIT_MSG}'
+    
     print('Committing reports.......')
 
     sp.call(git_checkout, shell=True)
