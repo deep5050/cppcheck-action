@@ -107,9 +107,9 @@ def run_cppcheck():
 
 def commit_changes():
     """Commits changes.
-    """
-    set_email = 'git config --local ' + GITHUB_EMAIL + ' "flawfinder-action@master"'
-    set_user = 'git config --local ' + GITHUB_USER + ' "flawfinder-action"'
+    """"
+    set_email = 'git config --local ' + user.email + ' ' + GITHUB_EMAIL
+    set_user = 'git config --local ' + user.name + ' ' + GITHUB_USER
 
     sp.call(set_email, shell=True)
     sp.call(set_user, shell=True)
