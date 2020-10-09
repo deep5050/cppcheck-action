@@ -108,15 +108,16 @@ def run_cppcheck():
 def commit_changes():
     """Commits changes.
     """
-    set_email = 'git config --local user.email "flawfinder-action@master"'
-    set_user = 'git config --local user.name "flawfinder-action"'
+    set_email = 'git config --local ' + GITHUB_EMAIL + ' "flawfinder-action@master"'
+    set_user = 'git config --local ' + GITHUB_USER + ' "flawfinder-action"'
 
     sp.call(set_email, shell=True)
     sp.call(set_user, shell=True)
 
     git_checkout = f'git checkout {TARGET_BRANCH}'
     git_add = f'git add {out_file}'
-    git_commit = 'git commit -m "cppcheck report added/updated"'
+    git_commit = 'git commit -m ' GITHUB_COMMIT_MSG
+    
     print('Committing reports.......')
 
     sp.call(git_checkout, shell=True)
