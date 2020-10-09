@@ -1,7 +1,6 @@
 import os
 import subprocess as sp
 
-
 GITHUB_EVENT_NAME = os.environ["GITHUB_EVENT_NAME"]
 
 # Set repository
