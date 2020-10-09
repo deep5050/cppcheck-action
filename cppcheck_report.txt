@@ -1,8 +1,8 @@
-[test.c:262]: (style) Suspicious condition (assignment + comparison); Clarify expression with parentheses.
-[test.c:181]: (style) The scope of the variable 'client_fd' can be reduced.
-[test.c:181]: (style) The scope of the variable 'bind_status' can be reduced.
-[test.c:299]: (style) Variable 'sorry' is assigned a value that is never used.
-[test.c:27]: (style) Obsolete function 'asctime' called. It is recommended to use 'strftime' instead.
-[test.c:299]: (style) The scope of the variable 'sorry' can be reduced.
-[test.c:64]: (style) The function 'kill_all_threads' is never used.
+[test.c:243]: (style) Suspicious condition (assignment + comparison); Clarify expression with parentheses.
+[test.c:164]: (style) The scope of the variable 'client_fd' can be reduced.
+[test.c:164]: (style) The scope of the variable 'bind_status' can be reduced.
+[test.c:281]: (style) Variable 'sorry' is assigned a value that is never used.
+[test.c:26]: (style) Obsolete function 'asctime' called. It is recommended to use 'strftime' instead.
+[test.c:281]: (style) The scope of the variable 'sorry' can be reduced.
+[test.c:59]: (style) The function 'kill_all_threads' is never used.
 (information) Cppcheck cannot find all the include files (use --check-config for details)
