@@ -116,8 +116,8 @@ def commit_changes():
 
     git_checkout = f'git checkout {TARGET_BRANCH}'
     git_add = f'git add {out_file}'
-    git_commit = f'git commit -m  "{COMMIT_MSG}"' 
-    
+    git_commit = f'git commit -m  "{COMMIT_MSG}"'
+
     print('Committing reports.......')
 
     sp.call(git_checkout, shell=True)
