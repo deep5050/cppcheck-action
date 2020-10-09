@@ -5,10 +5,10 @@ description: "Find potential vulnerabilities in your C/C++ codes"
 inputs:
   github_user:
     description: GitHub account name
-    default: "disable"
+    default: "flawfinder-action"
   github_email:
     description: GitHub account email
-    default: "disable"
+    default: "flawfinder-action@master"
   github_commit_msg:
     description: custom commit message
     default: "cppcheck report added/updated"
