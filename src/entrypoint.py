@@ -107,7 +107,7 @@ def run_cppcheck():
 
 def commit_changes():
     """Commits changes.
-    """"
+    """
     set_email = 'git config --local ' + user.email + ' ' + GITHUB_EMAIL
     set_user = 'git config --local ' + user.name + ' ' + GITHUB_USER
 
