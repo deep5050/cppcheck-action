@@ -37,7 +37,7 @@ MAX_CTU_DEPTH = os.environ['INPUT_MAX_CTU_DEPTH'] or 'disable'
 OUTPUT_FILE = os.environ['INPUT_OUTPUT_FILE'] or 'cppcheck_report.txt'
 PLATFORM = os.environ['INPUT_PLATFORM'] or 'disable'
 
-GITHUB_USER = os.environ['INPUT_GITHUB_USER'] or 'cppcheck-action'
+GITHUB_USER = os.environ['INPUT_GITHUB_USER_NAME'] or 'cppcheck-action'
 GITHUB_EMAIL = os.environ['INPUT_GITHUB_EMAIL'] or 'cppcheck-action@master'
 COMMIT_MSG = os.environ['INPUT_COMMIT_MSG'] or 'cppcheck report added or updated'
 
