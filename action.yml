@@ -3,6 +3,15 @@ author: deep5050
 description: "Find potential vulnerabilities in your C/C++ codes"
 
 inputs:
+  github_user:
+    description: GitHub account name
+    default: "disable"
+  github_email:
+    description: GitHub account email
+    default: "disable"
+  github_commit_msg:
+    description: custom commit message
+    default: "cppcheck report added/updated"
   github_token:
     description: "GITHUB_TOKEN secret < automatically provided by Github , you don't need to set up >"
     required: true
