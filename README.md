@@ -1,3 +1,6 @@
+ >** Please participate on this [poll](https://github.com/deep5050/cppcheck-action/issues/10) for a feature planned by me **
+
+
 <div align="center">
 <p align="center"><a href="https://github.com/deep5050/cppcheck-action"><img src="https://i.imgur.com/bDs8nfo.png" title="cpp-check action" align="center" height="180px" width="180px" /></a></p>
 
