@@ -1,12 +1,7 @@
  >** Please participate on this [poll](https://github.com/deep5050/cppcheck-action/issues/10) for a feature planned by me **
 
+![cppcheck-action](https://socialify.git.ci/deep5050/cppcheck-action/image?description=1&logo=https%3A%2F%2Fi.imgur.com%2FbDs8nfo.png&theme=Light)
 
-<div align="center">
-<p align="center"><a href="https://github.com/deep5050/cppcheck-action"><img src="https://i.imgur.com/bDs8nfo.png" title="cpp-check action" align="center" height="180px" width="180px" /></a></p>
-
-<p align="center"><h3 align="center">A github action to perform C/C++ code analysis using popular cppcheck tool</h3></p>
-
-</div>
 
 [![HitCount](http://hits.dwyl.com/deep5050/cppcheck-action.svg)](http://hits.dwyl.com/deep5050/cppcheck-action)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/deep5050/cppcheck-action?style=flat-square)
