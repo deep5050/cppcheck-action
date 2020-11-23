@@ -6,6 +6,8 @@
 [![HitCount](http://hits.dwyl.com/deep5050/cppcheck-action.svg)](http://hits.dwyl.com/deep5050/cppcheck-action)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/deep5050/cppcheck-action?style=flat-square)
 
+## [subscribe to service updates](https://github.com/deep5050/cppcheck-action/issues/11)
+
 ## What is cppcheck?
 
 [cppcheck](https://github.com/danmar/cppcheck) is a static analysis tool for
