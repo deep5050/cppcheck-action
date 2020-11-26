@@ -104,6 +104,9 @@ def prepare_command():
 def run_cppcheck():
     global command
     command = command + f" --output-file={out_file} ."
+    print("given command " + comand)
+    print("checking version")
+    sp.call'("cppcheck --version", shell=True)
     sp.call(command, shell=True)
 
 
