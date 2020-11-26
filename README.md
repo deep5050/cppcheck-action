@@ -1,13 +1,22 @@
+
+![cppcheck-action](https://socialify.git.ci/deep5050/cppcheck-action/image?description=1&logo=https%3A%2F%2Fi.imgur.com%2FbDs8nfo.png&theme=Light)
+
+
+<div align=center>
+<p align=center>
+<img align=center src=http://hits.dwyl.com/deep5050/cppcheck-action.svg alt=visits>
+<img align=center src=https://img.shields.io/github/v/release/deep5050/cppcheck-action?style=flat-square alt=release>
+</p>
+
+</div>
+
+
+## [subscribe to service updates](https://github.com/deep5050/cppcheck-action/issues/11)
+
 > ** Please participate on this
 > [poll](https://github.com/deep5050/cppcheck-action/issues/10) for a feature
 > planned by me **
 
-![cppcheck-action](https://socialify.git.ci/deep5050/cppcheck-action/image?description=1&logo=https%3A%2F%2Fi.imgur.com%2FbDs8nfo.png&theme=Light)
-
-[![HitCount](http://hits.dwyl.com/deep5050/cppcheck-action.svg)](http://hits.dwyl.com/deep5050/cppcheck-action)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/deep5050/cppcheck-action?style=flat-square)
-
-## [subscribe to service updates](https://github.com/deep5050/cppcheck-action/issues/11)
 
 ## What is cppcheck?
 
@@ -24,22 +33,27 @@ Create `cppcheck.yml` under `.github/workflows` With the following contents
 ### Default configuration
 
 ```yml
-name: cppcheck-action
+name: cppcheck-action-test
 on: [push]
 
 jobs:
   build:
-    name: cppcheck
+    name: cppcheck-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+          
       - name: cppcheck
-        uses: deep5050/cppcheck-action@master
+        uses: deep5050/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
-          github_username: "<your github username>"
-          github_email: "<github email>"
-          commit_msg: "<optional commit message>"
+          
+        
+      - name: publish report    
+        uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: 'main' # your branch name goes here
 ```
 
 ### Advanced configuration
@@ -55,12 +69,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: cppcheck
-        uses: deep5050/cppcheck-action@master
+        uses: deep5050/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
-          github_username: "<your github username>"
-          github_email: "<github email>"
-          commit_msg: "<optional commit message>"
           check_library:
           skip_preprocessor:
           enable:
@@ -71,6 +82,12 @@ jobs:
           max_ctu_depth:
           platform:
           output_file:
+
+      - name: publish report    
+        uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: 'main' # your branch name goes here
 ```
 
 ### Input options
