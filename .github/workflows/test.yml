@@ -15,3 +15,7 @@ jobs:
           github_email: "dipankarpal5050@gmail.com"
           commit_msg: "cppcheck test push"
           max_ctu_depth: '4'
+      - name: publish changes
+        uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
