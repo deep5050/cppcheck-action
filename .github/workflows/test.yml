@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: cppcheck
-        uses: deep5050/cppcheck-action@master
+        uses: deep5050/cppcheck-action@update-cppcheck
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
           github_username: "deep5050"
