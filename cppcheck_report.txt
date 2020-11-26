@@ -1,0 +1,29 @@
+test.c:26:9: style: Obsolete function 'asctime' called. It is recommended to use 'strftime' instead. [asctimeCalled]
+  str = asctime(local);
+        ^
+test.c:243:6: style: Suspicious condition (assignment + comparison); Clarify expression with parentheses. [clarifyCondition]
+  if (listen_status = listen(server_fd, backlog) == -1) {
+     ^
+test.c:243:21: style: Variable 'listen_status' is assigned a value that is never used. [unreadVariable]
+  if (listen_status = listen(server_fd, backlog) == -1) {
+                    ^
+test.c:262:20: style: Variable 'greetings' is assigned a value that is never used. [unreadVariable]
+  char greetings[] = "SERVER: Hi client, you are now connected\n";
+                   ^
+test.c:164:18: style: Unused variable: server_status [unusedVariable]
+  int client_fd, server_status, bind_status, listen_status, accept_status,
+                 ^
+test.c:164:61: style: Unused variable: accept_status [unusedVariable]
+  int client_fd, server_status, bind_status, listen_status, accept_status,
+                                                            ^
+test.c:166:8: style: Unused variable: buff [unusedVariable]
+  char buff[max_mssg_len];
+       ^
+test.c:169:7: style: Unused variable: bytes_sent [unusedVariable]
+  int bytes_sent;
+      ^
+test.c:59:0: style: The function 'kill_all_threads' is never used. [unusedFunction]
+
+^
+nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingIncludeSystem]
+
