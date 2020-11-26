@@ -1,6 +1,9 @@
 FROM facthunder/cppcheck
 
-RUN apt-get update -y
+RUN rm /var/lib/apt/lists/* -vf
+RUN apt-get clean
+RUN apt-get update
+
 RUN apt-get install -y git --no-install-recommends
 
 ADD ./src/entrypoint.py /entrypoint.py
