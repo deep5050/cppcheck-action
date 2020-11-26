@@ -8,10 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: cppcheck
-        uses: deep5050/cppcheck-action@master
+        uses: deep5050/cppcheck-action@update-cppcheck 
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
           github_username: "deep5050"
           github_email: "dipankarpal5050@gmail.com"
           commit_msg: "cppcheck test push"
-          max_ctu_depth: '4'
+          max_ctu_depth: 4
