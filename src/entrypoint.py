@@ -38,10 +38,10 @@ MAX_CTU_DEPTH = os.environ["INPUT_MAX_CTU_DEPTH"] or "disable"
 OUTPUT_FILE = os.environ["INPUT_OUTPUT_FILE"] or "cppcheck_report.txt"
 PLATFORM = os.environ["INPUT_PLATFORM"] or "disable"
 
-GITHUB_USER = os.environ["INPUT_GITHUB_USERNAME"] or "cppcheck-action"
-GITHUB_EMAIL = os.environ["INPUT_GITHUB_EMAIL"] or "cppcheck-action@master"
-COMMIT_MSG = os.environ[
-    "INPUT_COMMIT_MSG"] or "cppcheck report added or updated"
+# GITHUB_USER = os.environ["INPUT_GITHUB_USERNAME"] or "cppcheck-action"
+# GITHUB_EMAIL = os.environ["INPUT_GITHUB_EMAIL"] or "cppcheck-action@master"
+# COMMIT_MSG = os.environ[
+#     "INPUT_COMMIT_MSG"] or "cppcheck report added or updated"
 
 command = ""
 
@@ -110,31 +110,31 @@ def run_cppcheck():
     sp.call(command, shell=True)
 
 
-def commit_changes():
-    """Commits changes."""
-    set_email = f"git config --local  user.email {GITHUB_EMAIL}"
-    set_user = f"git config --local  user.name {GITHUB_USER}"
+# def commit_changes():
+#     """Commits changes."""
+#     set_email = f"git config --local  user.email {GITHUB_EMAIL}"
+#     set_user = f"git config --local  user.name {GITHUB_USER}"
 
-    sp.call(set_email, shell=True)
-    sp.call(set_user, shell=True)
+#     sp.call(set_email, shell=True)
+#     sp.call(set_user, shell=True)
 
-    git_checkout = f"git checkout {TARGET_BRANCH}"
-    git_add = f"git add {out_file}"
-    git_commit = f'git commit -m  "{COMMIT_MSG}"'
+#     git_checkout = f"git checkout {TARGET_BRANCH}"
+#     git_add = f"git add {out_file}"
+#     git_commit = f'git commit -m  "{COMMIT_MSG}"'
 
-    print("Committing reports.......")
+#     print("Committing reports.......")
 
-    sp.call(git_checkout, shell=True)
-    sp.call(git_add, shell=True)
-    sp.call(git_commit, shell=True)
+#     sp.call(git_checkout, shell=True)
+#     sp.call(git_add, shell=True)
+#     sp.call(git_commit, shell=True)
 
 
-def push_changes():
-    """Pushes commit."""
-    set_url = f"git remote set-url origin https://x-access-token:{GITHUB_TOKEN}@github.com/{TARGET_REPOSITORY}"
-    git_push = f"git push origin {TARGET_BRANCH}"
-    sp.call(set_url, shell=True)
-    sp.call(git_push, shell=True)
+# def push_changes():
+#     """Pushes commit."""
+#     set_url = f"git remote set-url origin https://x-access-token:{GITHUB_TOKEN}@github.com/{TARGET_REPOSITORY}"
+#     git_push = f"git push origin {TARGET_BRANCH}"
+#     sp.call(set_url, shell=True)
+#     sp.call(git_push, shell=True)
 
 
 def main():
@@ -145,8 +145,8 @@ def main():
 
     prepare_command()
     run_cppcheck()
-    commit_changes()
-    push_changes()
+    # commit_changes()
+    # push_changes()
 
 
 if __name__ == "__main__":
