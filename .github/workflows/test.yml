@@ -7,6 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: deleteing previous report
+        run: |
+          git config --local user.email "dipankarpal5050@gmail.com" # change email accordingly
+          git config --local user.name "deep5050" # change accordingly
+          git rm --cached "cppcheck_report.txt" # change file name accordingly
+          
       - name: cppcheck
         uses: deep5050/cppcheck-action@update-cppcheck
         with:
@@ -16,18 +22,13 @@ jobs:
           commit_msg: "cppcheck test push"
           max_ctu_depth: 4
           
-      - name: Commit report file
+      - name: Committing new report file
         run: |
-          git config --local user.email "dipankarpal5050@gmail.com" # change email accordingly
-          git config --local user.name "deep5050" # change accordingly
-          
-          git rm --cached "cppcheck_report.txt" # change file name accordingly
           git add "cppcheck_report.txt" # change file name accordingly
-          
           git commit -m "report added/updated" # change accordingly
           
-          
-      - name: Push changes
+      
+      - name: Pushing the report
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
