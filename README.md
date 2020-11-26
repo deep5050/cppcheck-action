@@ -1,7 +1,8 @@
- >** Please participate on this [poll](https://github.com/deep5050/cppcheck-action/issues/10) for a feature planned by me **
+> ** Please participate on this
+> [poll](https://github.com/deep5050/cppcheck-action/issues/10) for a feature
+> planned by me **
 
 ![cppcheck-action](https://socialify.git.ci/deep5050/cppcheck-action/image?description=1&logo=https%3A%2F%2Fi.imgur.com%2FbDs8nfo.png&theme=Light)
-
 
 [![HitCount](http://hits.dwyl.com/deep5050/cppcheck-action.svg)](http://hits.dwyl.com/deep5050/cppcheck-action)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/deep5050/cppcheck-action?style=flat-square)
@@ -141,5 +142,3 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 Icons made by
 <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
 from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-
-
