@@ -14,13 +14,19 @@ jobs:
           github_username: "deep5050"
           github_email: "dipankarpal5050@gmail.com"
           commit_msg: "cppcheck test push"
-          max_ctu_depth: '4'
+          max_ctu_depth: 4
+          
       - name: Commit report file
         run: |
-          git config --local user.email "dipankarpal5050@gmail.com"
-          git config --local user.name "deep5050"
-          git add --all
-          git commit -m "report added/updated" --quiet
+          git config --local user.email "dipankarpal5050@gmail.com" # change email accordingly
+          git config --local user.name "deep5050" # change accordingly
+          
+          git rm --cached "cppcheck_report.txt" # change file name accordingly
+          git add "cppcheck_report.txt" # change file name accordingly
+          
+          git commit -m "report added/updated" # change accordingly
+          
+          
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
