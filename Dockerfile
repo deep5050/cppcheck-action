@@ -1,4 +1,4 @@
-FROM neszt/cppcheck-docker
+FROM facthunder/cppcheck
 
 ADD ./src/entrypoint.py /entrypoint.py
 ENTRYPOINT ["python", "/entrypoint.py"]
