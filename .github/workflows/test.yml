@@ -14,4 +14,4 @@ jobs:
           github_username: "deep5050"
           github_email: "dipankarpal5050@gmail.com"
           commit_msg: "cppcheck test push"
-          max_ctu_depth: 4
+          max_ctu_depth: '4'
