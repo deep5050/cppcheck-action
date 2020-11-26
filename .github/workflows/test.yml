@@ -9,12 +9,9 @@ jobs:
       - uses: actions/checkout@v2
           
       - name: cppcheck
-        uses: deep5050/cppcheck-action@update-cppcheck
+        uses: deep5050/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
-          github_username: "deep5050"
-          github_email: "dipankarpal5050@gmail.com"
-          commit_msg: "cppcheck test push"
           max_ctu_depth: 4
           
         
@@ -22,6 +19,6 @@ jobs:
         uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: 'update-cppcheck'
+          BRANCH_NAME: 'main'
 
 
