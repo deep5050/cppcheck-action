@@ -145,8 +145,8 @@ def main():
 
     prepare_command()
     run_cppcheck()
-    # commit_changes()
-    # push_changes()
+    commit_changes()
+    push_changes()
 
 
 if __name__ == "__main__":
