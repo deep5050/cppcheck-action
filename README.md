@@ -1,6 +1,13 @@
-> ** Please participate on this
-> [poll](https://github.com/deep5050/cppcheck-action/issues/10) for a feature
-> planned by me **
+### Please participate on this poll for a feature planned by me 
+
+Everytime a PR is raised, cppcheck will be performed automatically and instead of pushing the report back to a repo, this time it will directly comment on the PR !
+
+
+[![](https://api.gh-polls.com/poll/01EMVBKVC6PMPZ6755FKAZRF69/YES)](https://api.gh-polls.com/poll/01EMVBKVC6PMPZ6755FKAZRF69/YES/vote)
+
+[![](https://api.gh-polls.com/poll/01EMVBKVC6PMPZ6755FKAZRF69/NO)](https://api.gh-polls.com/poll/01EMVBKVC6PMPZ6755FKAZRF69/NO/vote)
+
+[![](https://api.gh-polls.com/poll/01EMVBKVC6PMPZ6755FKAZRF69/MAYBE)](https://api.gh-polls.com/poll/01EMVBKVC6PMPZ6755FKAZRF69/MAYBE/vote)
 
 ![cppcheck-action](https://socialify.git.ci/deep5050/cppcheck-action/image?description=1&logo=https%3A%2F%2Fi.imgur.com%2FbDs8nfo.png&theme=Light)
 
