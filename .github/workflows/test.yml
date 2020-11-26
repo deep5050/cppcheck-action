@@ -17,17 +17,11 @@ jobs:
           commit_msg: "cppcheck test push"
           max_ctu_depth: 4
           
-      - name: Committing new report file
-        run: |
-          git config --local user.email "dipankarpal5050@gmail.com" 
-          git config --local user.name "deep5050" 
-          git add  .
-          git commit -m "report added/updated" 2>dev/null
-          
-      
-      - name: Pushing the report
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+        
+      - name: publish report    
+        uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: ${{ github.ref }}
+
 
