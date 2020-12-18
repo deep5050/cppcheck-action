@@ -13,7 +13,11 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
           max_ctu_depth: 4
-          
+          skip_preprocessor: enable
+          check_library: disable
+          inconclusive: enable
+          inline_suppression: disable
+          platform: disable
         
       - name: publish report    
         uses: mikeal/publish-to-github-action@master
