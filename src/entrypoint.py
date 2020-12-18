@@ -7,14 +7,10 @@ GITHUB_EVENT_NAME = os.environ["GITHUB_EVENT_NAME"]
 CURRENT_REPOSITORY = os.environ["GITHUB_REPOSITORY"]
 # TODO: How about PRs from forks?
 TARGET_REPOSITORY = os.environ["INPUT_TARGET_REPOSITORY"] or CURRENT_REPOSITORY
-PULL_REQUEST_REPOSITORY = (
-    os.environ["INPUT_PULL_REQUEST_REPOSITORY"] or TARGET_REPOSITORY
-)
-REPOSITORY = (
-    PULL_REQUEST_REPOSITORY
-    if GITHUB_EVENT_NAME == "pull_request"
-    else TARGET_REPOSITORY
-)
+PULL_REQUEST_REPOSITORY = (os.environ["INPUT_PULL_REQUEST_REPOSITORY"]
+                           or TARGET_REPOSITORY)
+REPOSITORY = (PULL_REQUEST_REPOSITORY
+              if GITHUB_EVENT_NAME == "pull_request" else TARGET_REPOSITORY)
 
 # Set branches
 GITHUB_REF = os.environ["GITHUB_REF"]
@@ -133,7 +129,6 @@ def run_cppcheck():
 #     sp.call(git_add, shell=True)
 #     sp.call(git_commit, shell=True)
 
-
 # def push_changes():
 #     """Pushes commit."""
 #     set_url = f"git remote set-url origin https://x-access-token:{GITHUB_TOKEN}@github.com/{TARGET_REPOSITORY}"
@@ -144,9 +139,8 @@ def run_cppcheck():
 
 def main():
 
-    if (GITHUB_EVENT_NAME == "pull_request") and (
-        GITHUB_ACTOR != GITHUB_REPOSITORY_OWNER
-    ):
+    if (GITHUB_EVENT_NAME == "pull_request") and (GITHUB_ACTOR !=
+                                                  GITHUB_REPOSITORY_OWNER):
         return
 
     prepare_command()
