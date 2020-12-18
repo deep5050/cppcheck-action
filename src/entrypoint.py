@@ -107,7 +107,7 @@ def run_cppcheck():
     print("given command " + command)
     print("checking version")
     sp.call("cppcheck --version", shell=True)
-    sp.call("cppcheck --help",shell=True)
+    sp.call("cppcheck --help", shell=True)
     sp.call(command, shell=True)
 
 
