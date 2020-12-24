@@ -114,12 +114,12 @@ def command():
         CHECK_LIBRARY: (operator.eq, ENABLED, "--check-library"),
         SKIP_PREPROCESSOR: (operator.eq, ENABLED, "-E"),
         INLINE_SUPPRESSION: (operator.eq, ENABLED, "--inline-suppr"),
-        ENABLE_INCONCLUSIVE: (operator.eq, DISABLED, "--inconclusive"),
+        ENABLE_INCONCLUSIVE: (operator.ne, DISABLED, "--inconclusive"),
         # unary actions:
-        EXCLUDE_CHECK: (operator.eq, DISABLED, "-i {{}}"),
-        ENFORCE_LANGUAGE: (operator.eq, DISABLED, "--language={{}}}"),
-        MAX_CTU_DEPTH: (operator.eq, DISABLED, "--max-ctu-depth={{}}}"),
-        PLATFORM_TYPE: (operator.ne, DISABLED, "--platform={{}}"),
+        EXCLUDE_CHECK: (operator.ne, DISABLED, "-i {{}}"),
+        ENFORCE_LANGUAGE: (operator.ne, DISABLED, "--language={}"),
+        MAX_CTU_DEPTH: (operator.ne, DISABLED, "--max-ctu-depth={}"),
+        PLATFORM_TYPE: (operator.ne, DISABLED, "--platform={}"),
     }
     constant_dimensions = tuple(actions.keys())[:constant_actions]
 
