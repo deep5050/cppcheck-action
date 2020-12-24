@@ -106,9 +106,9 @@ def is_valid(check):
     return check if check in KNOWN_CHECKS else ""
 
 
-def parse_checks(text):
+def parse_checks(dsl):
     """Return the parsed checks."""
-    checks = set(t for t in split_csv(text) if is_valid(t))
+    checks = set(t for t in split_csv(dsl[ENABLE_CHECKS]) if is_valid(t))
     if CHECK_EVERYTHING in checks:
         checks = [CHECK_EVERYTHING]
     else:
@@ -116,18 +116,21 @@ def parse_checks(text):
     return checks
 
 
-def command():
+def command(dsl=None, actions=None, checks_sep=CHECKS_SEP, constant_dimensions=CONSTANT_DIMENSIONS):
     """Prepare the command vector and set the path to the report file"""
+    dsl = DSL if dsl is None else dsl
+    actions = ACTIONS if actions is None else actions
+
     vector = [
         "cppcheck",
-        f"--enable={CHECKS_SEP.join(parse_checks(DSL[ENABLE_CHECKS]))}",
+        f"--enable={checks_sep.join(parse_checks(dsl))}",
     ]
 
-    for dim in ACTIONS:
-        predicate, ref, template = ACTIONS[dim]
-        payload = DSL[dim]
+    for dim in actions:
+        predicate, ref, template = actions[dim]
+        payload = dsl[dim]
         if predicate(payload, ref):
-            vector.append(template if dim in CONSTANT_DIMENSIONS else template.format(payload))
+            vector.append(template if dim in constant_dimensions else template.format(payload))
 
     return vector
 
