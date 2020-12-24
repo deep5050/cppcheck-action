@@ -80,7 +80,7 @@ DSL = {
 def split_csv(text):
     """Naive split of text as comma separated scope values yielding lower case strings."""
     if SCOPE_SEP in text:
-        for scope in text:
+        for scope in text.split(SCOPE_SEP):
             yield scope.strip().lower()
     else:
         yield text.strip().lower()
