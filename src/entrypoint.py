@@ -134,8 +134,8 @@ def command():
 
 def run(vector, where=".", show_version=None, show_help=None):
     """Execute the command in a sub process."""
-    show_version = show_version if show_version is None else True
-    show_help = show_help if show_help is None else True
+    show_version = show_version is None
+    show_help = show_help is None
     vector.append(f"--output-file={DSL[OUTPUT_FILE]}")
     vector.append(f"{where}")
     print(f"given command {' '.join(vector)}")
@@ -159,4 +159,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main()  # pragma: no cover
