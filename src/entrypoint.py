@@ -3,10 +3,20 @@ import operator
 import os
 import subprocess
 
+# The following environment reads will fail execution if variables not set:
 GITHUB_EVENT_NAME = os.environ["GITHUB_EVENT_NAME"]
-
 # Set repository
 CURRENT_REPOSITORY = os.environ["GITHUB_REPOSITORY"]
+# Set branches
+GITHUB_REF = os.environ["GITHUB_REF"]
+GITHUB_HEAD_REF = os.environ["GITHUB_HEAD_REF"]
+GITHUB_BASE_REF = os.environ["GITHUB_BASE_REF"]
+# Owners and tokens
+GITHUB_ACTOR = os.environ["GITHUB_ACTOR"]
+GITHUB_REPOSITORY_OWNER = os.environ["GITHUB_REPOSITORY_OWNER"]
+INPUT_GITHUB_TOKEN = os.environ["INPUT_GITHUB_TOKEN"]
+
+# Derive from environment with defaults:
 # TODO: How about PRs from forks?
 INPUT_TARGET_REPOSITORY = os.getenv("INPUT_TARGET_REPOSITORY", CURRENT_REPOSITORY)
 INPUT_PULL_REQUEST_REPOSITORY = (
@@ -18,10 +28,6 @@ REPOSITORY = (
     else INPUT_TARGET_REPOSITORY
 )
 
-# Set branches
-GITHUB_REF = os.environ["GITHUB_REF"]
-GITHUB_HEAD_REF = os.environ["GITHUB_HEAD_REF"]
-GITHUB_BASE_REF = os.environ["GITHUB_BASE_REF"]
 CURRENT_BRANCH = GITHUB_HEAD_REF or GITHUB_REF.rsplit("/", 1)[-1]
 INPUT_TARGET_BRANCH = os.getenv("INPUT_TARGET_BRANCH", CURRENT_BRANCH)
 INPUT_PULL_REQUEST_BRANCH = os.getenv("INPUT_PULL_REQUEST_BRANCH", GITHUB_BASE_REF)
@@ -31,11 +37,8 @@ BRANCH = (
     else INPUT_TARGET_BRANCH
 )
 
-GITHUB_ACTOR = os.environ["GITHUB_ACTOR"]
-GITHUB_REPOSITORY_OWNER = os.environ["GITHUB_REPOSITORY_OWNER"]
-INPUT_GITHUB_TOKEN = os.environ["INPUT_GITHUB_TOKEN"]
 
-# domain specific vocabulary for switches:
+# Define cppcheck specific vocabulary for switches:
 DISABLED = 'disable'
 ENABLED = 'enable'
 CHECK_EVERYTHING = 'all'
@@ -51,7 +54,7 @@ KNOWN_CHECKS = (
     "unusedFunction",
     "warning",
 )
-# domain specific language between environment and cppcheck parameters:
+# Domain specific mapping between environment and cppcheck parameters:
 CHECK_LIBRARY = "INPUT_CHECK_LIBRARY"
 SKIP_PREPROCESSOR = "INPUT_SKIP_PREPROCESSOR"
 ENABLE_CHECKS = "INPUT_ENABLE"
@@ -63,6 +66,7 @@ MAX_CTU_DEPTH = "INPUT_MAX_CTU_DEPTH"
 OUTPUT_FILE = "INPUT_OUTPUT_FILE"
 PLATFORM_TYPE = "INPUT_PLATFORM"
 
+# Main interface map for cppcheck instrumentation and outputs:
 DSL = {
     CHECK_LIBRARY: os.getenv(CHECK_LIBRARY, DISABLED),
     SKIP_PREPROCESSOR: os.getenv(SKIP_PREPROCESSOR, DISABLED),
@@ -76,6 +80,7 @@ DSL = {
     PLATFORM_TYPE: os.getenv(PLATFORM_TYPE, DISABLED),
 }
 
+# Prepare actions to be taken using the above environment interface map:
 CONSTANT_ACTIONS = 4
 ACTIONS = {  # group by arity of actions to simplify processing below
     # constant actions:
