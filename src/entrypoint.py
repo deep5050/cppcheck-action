@@ -35,10 +35,14 @@ GITHUB_ACTOR = os.environ["GITHUB_ACTOR"]
 GITHUB_REPOSITORY_OWNER = os.environ["GITHUB_REPOSITORY_OWNER"]
 INPUT_GITHUB_TOKEN = os.environ["INPUT_GITHUB_TOKEN"]
 
-# command related inputs
+# domain specific vocabulary for switches:
+DISABLED = 'disable'
+ENABLED = 'enable'
+CHECK_EVERYTHING = 'all'
+
 SCOPE_SEP = ","
 KNOWN_SCOPES = (
-    "all",
+    CHECK_EVERYTHING,
     "information",
     "missingInclude",
     "performance",
@@ -59,14 +63,10 @@ MAX_CTU_DEPTH = "INPUT_MAX_CTU_DEPTH"
 OUTPUT_FILE = "INPUT_OUTPUT_FILE"
 PLATFORM_TYPE = "INPUT_PLATFORM"
 
-# domain specific vocabulary for switches:
-DISABLED = 'disable'
-ENABLED = 'enable'
-
 DSL = {
     CHECK_LIBRARY: os.getenv(CHECK_LIBRARY, "disable"),
     SKIP_PREPROCESSOR: os.getenv(SKIP_PREPROCESSOR, "disable"),
-    ENABLE_CHECKS: os.getenv(ENABLE_CHECKS, "all"),
+    ENABLE_CHECKS: os.getenv(ENABLE_CHECKS, CHECK_EVERYTHING),
     EXCLUDE_CHECK: os.getenv(EXCLUDE_CHECK, "disable"),
     ENABLE_INCONCLUSIVE: os.getenv(ENABLE_INCONCLUSIVE, "enable"),
     INLINE_SUPPRESSION: os.getenv(INLINE_SUPPRESSION, "disable"),
@@ -94,8 +94,8 @@ def is_valid(scope):
 def parse_scopes(text):
     """Return the parsed scopes."""
     scopes = set(t for t in split_csv(text) if is_valid(t))
-    if "all" in scopes:
-        scopes = ["all"]
+    if CHECK_EVERYTHING in scopes:
+        scopes = [CHECK_EVERYTHING]
     else:
         scopes = sorted(scopes)
     return scopes
