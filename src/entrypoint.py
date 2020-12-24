@@ -91,9 +91,9 @@ def is_valid(scope):
     return scope if scope in KNOWN_SCOPES else ""
 
 
-def parse_scopes():
+def parse_scopes(text):
     """Return the parsed scopes."""
-    scopes = set(t for t in split_csv(DSL[ENABLE_CHECKS]) if is_valid(t))
+    scopes = set(t for t in split_csv(text) if is_valid(t))
     if "all" in scopes:
         scopes = ["all"]
     else:
@@ -105,7 +105,7 @@ def command():
     """Prepare the command vector and set the path to the report file"""
     vector = [
         "cppcheck",
-        f"--enable={SCOPE_SEP.join(parse_scopes())}",
+        f"--enable={SCOPE_SEP.join(parse_scopes(DSL[ENABLE_CHECKS]))}",
     ]
 
     constant_actions = 4
