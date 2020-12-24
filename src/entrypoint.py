@@ -40,8 +40,8 @@ DISABLED = 'disable'
 ENABLED = 'enable'
 CHECK_EVERYTHING = 'all'
 
-SCOPE_SEP = ","
-KNOWN_SCOPES = (
+CHECKS_SEP = ","
+KNOWN_CHECKS = (
     CHECK_EVERYTHING,
     "information",
     "missingInclude",
@@ -93,34 +93,34 @@ CONSTANT_DIMENSIONS = tuple(ACTIONS.keys())[:CONSTANT_ACTIONS]
 
 
 def split_csv(text):
-    """Naive split of text as comma separated scope values yielding as-input case strings."""
-    if SCOPE_SEP in text:
-        for scope in text.split(SCOPE_SEP):
-            yield scope.strip()
+    """Naive split of text as comma separated check aspects yielding as-input case strings."""
+    if CHECKS_SEP in text:
+        for check in text.split(CHECKS_SEP):
+            yield check.strip()
     else:
         yield text.strip()
 
 
-def is_valid(scope):
+def is_valid(check):
     """Return scope if valid else empty string."""
-    return scope if scope in KNOWN_SCOPES else ""
+    return check if check in KNOWN_CHECKS else ""
 
 
-def parse_scopes(text):
-    """Return the parsed scopes."""
-    scopes = set(t for t in split_csv(text) if is_valid(t))
-    if CHECK_EVERYTHING in scopes:
-        scopes = [CHECK_EVERYTHING]
+def parse_checks(text):
+    """Return the parsed checks."""
+    checks = set(t for t in split_csv(text) if is_valid(t))
+    if CHECK_EVERYTHING in checks:
+        checks = [CHECK_EVERYTHING]
     else:
-        scopes = sorted(scopes)
-    return scopes
+        checks = sorted(checks)
+    return checks
 
 
 def command():
     """Prepare the command vector and set the path to the report file"""
     vector = [
         "cppcheck",
-        f"--enable={SCOPE_SEP.join(parse_scopes(DSL[ENABLE_CHECKS]))}",
+        f"--enable={CHECKS_SEP.join(parse_checks(DSL[ENABLE_CHECKS]))}",
     ]
 
     for dim in ACTIONS:
