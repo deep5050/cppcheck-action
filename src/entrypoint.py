@@ -76,6 +76,21 @@ DSL = {
     PLATFORM_TYPE: os.getenv(PLATFORM_TYPE, DISABLED),
 }
 
+CONSTANT_ACTIONS = 4
+ACTIONS = {  # group by arity of actions to simplify processing below
+    # constant actions:
+    CHECK_LIBRARY: (operator.eq, ENABLED, "--check-library"),
+    SKIP_PREPROCESSOR: (operator.eq, ENABLED, "-E"),
+    INLINE_SUPPRESSION: (operator.eq, ENABLED, "--inline-suppr"),
+    ENABLE_INCONCLUSIVE: (operator.ne, DISABLED, "--inconclusive"),
+    # unary actions:
+    EXCLUDE_CHECK: (operator.ne, DISABLED, "-i {{}}"),
+    ENFORCE_LANGUAGE: (operator.ne, DISABLED, "--language={}"),
+    MAX_CTU_DEPTH: (operator.ne, DISABLED, "--max-ctu-depth={}"),
+    PLATFORM_TYPE: (operator.ne, DISABLED, "--platform={}"),
+}
+CONSTANT_DIMENSIONS = tuple(ACTIONS.keys())[:CONSTANT_ACTIONS]
+
 
 def split_csv(text):
     """Naive split of text as comma separated scope values yielding as-input case strings."""
@@ -108,26 +123,11 @@ def command():
         f"--enable={SCOPE_SEP.join(parse_scopes(DSL[ENABLE_CHECKS]))}",
     ]
 
-    constant_actions = 4
-    actions = {  # group by arity of actions to simplify processing below
-        # constant actions:
-        CHECK_LIBRARY: (operator.eq, ENABLED, "--check-library"),
-        SKIP_PREPROCESSOR: (operator.eq, ENABLED, "-E"),
-        INLINE_SUPPRESSION: (operator.eq, ENABLED, "--inline-suppr"),
-        ENABLE_INCONCLUSIVE: (operator.ne, DISABLED, "--inconclusive"),
-        # unary actions:
-        EXCLUDE_CHECK: (operator.ne, DISABLED, "-i {{}}"),
-        ENFORCE_LANGUAGE: (operator.ne, DISABLED, "--language={}"),
-        MAX_CTU_DEPTH: (operator.ne, DISABLED, "--max-ctu-depth={}"),
-        PLATFORM_TYPE: (operator.ne, DISABLED, "--platform={}"),
-    }
-    constant_dimensions = tuple(actions.keys())[:constant_actions]
-
-    for dim in actions:
-        predicate, ref, template = actions[dim]
+    for dim in ACTIONS:
+        predicate, ref, template = ACTIONS[dim]
         payload = DSL[dim]
         if predicate(payload, ref):
-            vector.append(template if dim in constant_dimensions else template.format(payload))
+            vector.append(template if dim in CONSTANT_DIMENSIONS else template.format(payload))
 
     return vector
 
