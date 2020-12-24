@@ -78,12 +78,12 @@ DSL = {
 
 
 def split_csv(text):
-    """Naive split of text as comma separated scope values yielding lower case strings."""
+    """Naive split of text as comma separated scope values yielding as-input case strings."""
     if SCOPE_SEP in text:
         for scope in text.split(SCOPE_SEP):
-            yield scope.strip().lower()
+            yield scope.strip()
     else:
-        yield text.strip().lower()
+        yield text.strip()
 
 
 def is_valid(scope):
