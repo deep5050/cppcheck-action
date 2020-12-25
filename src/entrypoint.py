@@ -146,7 +146,8 @@ def run(vector, where=".", show_version=None, show_help=None):
     show_help = show_help is None
     vector.append(f"--output-file={DSL[OUTPUT_FILE]}")
     vector.append(f"{where}")
-    print(f"given command {' '.join(vector)}")
+    print("--------------------------------------")
+    print(f"given command: {' '.join(vector)}")
 
     if show_version:
         print("checking version")
