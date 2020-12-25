@@ -16,8 +16,11 @@ jobs:
           skip_preprocessor: enable
           check_library: disable
           inconclusive: enable
-          inline_suppression: disable
+          inline_suppression: enable
           platform: disable
+          enable: performance,style,warning
+          output_file: report.txt
+          force_language: c
         
       - name: publish report    
         uses: mikeal/publish-to-github-action@master
