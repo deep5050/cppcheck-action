@@ -1,8 +1,0 @@
-__tests__/test.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 1 of 3 configurations. Use --force to check all configurations. [toomanyconfigs]
-
-^
-__tests__/test.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
-
-^
-nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
-
