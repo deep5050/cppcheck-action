@@ -19,7 +19,7 @@ jobs:
           inline_suppression: enable
           platform: disable
           enable: performance,style,warning
-          output_file: report.txt
+          output_file: "report.txt"
           force_language: c
         
       - name: publish report    
