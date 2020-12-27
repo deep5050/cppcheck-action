@@ -149,12 +149,12 @@ def run(vector, where=".", show_version=None, show_help=None):
     print("--------------------------------------")
     print(f"given command: {' '.join(vector)}")
 
-    if show_version:
-        print("checking version")
-        subprocess.call("cppcheck --version", shell=True)
+#     if show_version:
+#         print("checking version")
+#         subprocess.call("cppcheck --version", shell=True)
 
-    if show_help:
-        subprocess.call("cppcheck --help", shell=True)
+#     if show_help:
+#         subprocess.call("cppcheck --help", shell=True)
 
     subprocess.call(vector, shell=True)
 
