@@ -20,6 +20,7 @@ jobs:
           platform: disable
           enable: performance,style,warning
           force_language: c
+          output_file: "./report.txt"
         
       - name: publish report    
         uses: mikeal/publish-to-github-action@master
