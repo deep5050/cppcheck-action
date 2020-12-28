@@ -66,9 +66,15 @@ inputs:
     description: " files where the result to be dumped"
     default: "cppcheck_report.txt"
     required: false
+
   target_branch:
     description: "Branch that the badge will target. Defaults to the current branch."
     default: ""
+    required: false
+
+  other_options:
+    description: "Any other options you want to add, separate with a space, wrong options will cause a failure"
+    default: "disable"
     required: false
 
   pull_request_branch:
