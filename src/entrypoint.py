@@ -61,6 +61,8 @@ KNOWN_CHECKS = (
     "unusedFunction",
     "warning",
 )
+OTHERS_SEP = " -"
+
 # Domain specific mapping between environment and cppcheck parameters:
 CHECK_LIBRARY = "INPUT_CHECK_LIBRARY"
 SKIP_PREPROCESSOR = "INPUT_SKIP_PREPROCESSOR"
@@ -72,6 +74,7 @@ ENFORCE_LANGUAGE = "INPUT_FORCE_LANGUAGE"
 MAX_CTU_DEPTH = "INPUT_MAX_CTU_DEPTH"
 OUTPUT_FILE = "INPUT_OUTPUT_FILE"
 PLATFORM_TYPE = "INPUT_PLATFORM"
+OTHER_OPTIONS = "OTHER_OPTIONS"
 
 # Main interface map for cppcheck instrumentation and outputs:
 DSL = {
@@ -85,21 +88,35 @@ DSL = {
     MAX_CTU_DEPTH: os.getenv(MAX_CTU_DEPTH, DISABLED),
     OUTPUT_FILE: os.getenv(OUTPUT_FILE, "cppcheck_report.txt"),
     PLATFORM_TYPE: os.getenv(PLATFORM_TYPE, DISABLED),
+    OTHER_OPTIONS: os.getenv(OTHER_OPTIONS, DISABLED),
 }
+
+
+def split_other_options(text):
+    """Naive split of other options as space-dash separated entries yielding single options."""
+    if OTHERS_SEP in text:
+        is_first = True
+        for entry in text.split(OTHERS_SEP):
+            yield entry.strip() if is_first else f'-{entry.strip()}'  # other entries lose dash
+            is_first = False
+    else:
+        yield text.strip()
+
 
 # Prepare actions to be taken using the above environment interface map:
 CONSTANT_ACTIONS = 4
 ACTIONS = {  # group by arity of actions to simplify processing below
     # constant actions:
-    CHECK_LIBRARY: (operator.eq, ENABLED, "--check-library"),
-    SKIP_PREPROCESSOR: (operator.eq, ENABLED, "-E"),
-    INLINE_SUPPRESSION: (operator.eq, ENABLED, "--inline-suppr"),
-    ENABLE_INCONCLUSIVE: (operator.ne, DISABLED, "--inconclusive"),
+    CHECK_LIBRARY: (operator.eq, ENABLED, "--check-library", None),
+    SKIP_PREPROCESSOR: (operator.eq, ENABLED, "-E", None),
+    INLINE_SUPPRESSION: (operator.eq, ENABLED, "--inline-suppr", None),
+    ENABLE_INCONCLUSIVE: (operator.ne, DISABLED, "--inconclusive", None),
     # unary actions:
-    EXCLUDE_CHECK: (operator.ne, DISABLED, "-i {{}}"),
-    ENFORCE_LANGUAGE: (operator.ne, DISABLED, "--language={}"),
-    MAX_CTU_DEPTH: (operator.ne, DISABLED, "--max-ctu-depth={}"),
-    PLATFORM_TYPE: (operator.ne, DISABLED, "--platform={}"),
+    EXCLUDE_CHECK: (operator.ne, DISABLED, "-i {{}}", None),
+    ENFORCE_LANGUAGE: (operator.ne, DISABLED, "--language={}", None),
+    MAX_CTU_DEPTH: (operator.ne, DISABLED, "--max-ctu-depth={}", None),
+    PLATFORM_TYPE: (operator.ne, DISABLED, "--platform={}", None),
+    OTHER_OPTIONS: (operator.ne, DISABLED, "{}", split_other_options),
 }
 CONSTANT_DIMENSIONS = tuple(ACTIONS.keys())[:CONSTANT_ACTIONS]
 
@@ -143,22 +160,27 @@ def command(dsl=None, actions=None, checks_sep=CHECKS_SEP, constant_dimensions=C
     ]
 
     for dim in actions:
-        predicate, ref, template = actions[dim]
+        predicate, ref, template, processing = actions[dim]
         payload = dsl[dim]
         if predicate(payload, ref):
-            vector.append(template if dim in constant_dimensions else template.format(payload))
+            if not processing:
+                vector.append(template if dim in constant_dimensions else template.format(payload))
+            else:  # implicit dim not in constant_dimension
+                for chunk in processing(payload):
+                    vector.append(template.format(chunk))
+
 
     return vector
 
 
 def display_sca_executor_version():
     """Capture current behavior and document tool version."""
-    return subprocess.run((SCA_EXECUTOR, "--version"), capture_output=True, check=True)
+    return subprocess.run((SCA_EXECUTOR, "--version"), capture_output=True, check=False)
 
 
 def display_sca_executor_help():
     """Capture current behavior and document tool version."""
-    return subprocess.run((SCA_EXECUTOR, "--help"), capture_output=True, check=True)
+    return subprocess.run((SCA_EXECUTOR, "--help"), capture_output=True, check=False)
 
 
 def run(vector, where=SOURCE_ROOT, show_version=False, show_help=False):
@@ -186,6 +208,8 @@ def run(vector, where=SOURCE_ROOT, show_version=False, show_help=False):
         return 1
     except subprocess.CalledProcessError as err:
         print("source root not found?", err)
+        print("details:")
+        print(err.stdout.decode(ENCODING, errors="ignore"))
         return 1
 
     if not completed.returncode:  # currently cppcheck is happy to find no source file
