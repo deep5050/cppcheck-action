@@ -2,6 +2,13 @@
 import operator
 import os
 import subprocess
+import sys
+
+ENCODING = "utf-8"
+SCA_EXECUTOR = "cppcheck"
+DISPLAY_SCA_VERSION = True
+DISPLAY_SCA_HELP = True
+SOURCE_ROOT = "."
 
 # The following environment reads will fail execution if variables not set:
 GITHUB_EVENT_NAME = os.environ["GITHUB_EVENT_NAME"]
@@ -19,8 +26,8 @@ INPUT_GITHUB_TOKEN = os.environ["INPUT_GITHUB_TOKEN"]
 # Derive from environment with defaults:
 # TODO: How about PRs from forks?
 INPUT_TARGET_REPOSITORY = os.getenv("INPUT_TARGET_REPOSITORY", CURRENT_REPOSITORY)
-INPUT_PULL_REQUEST_REPOSITORY = (
-        os.getenv("INPUT_PULL_REQUEST_REPOSITORY", INPUT_TARGET_REPOSITORY)
+INPUT_PULL_REQUEST_REPOSITORY = os.getenv(
+    "INPUT_PULL_REQUEST_REPOSITORY", INPUT_TARGET_REPOSITORY
 )
 REPOSITORY = (
     INPUT_PULL_REQUEST_REPOSITORY
@@ -39,9 +46,9 @@ BRANCH = (
 
 
 # Define cppcheck specific vocabulary for switches:
-DISABLED = 'disable'
-ENABLED = 'enable'
-CHECK_EVERYTHING = 'all'
+DISABLED = "disable"
+ENABLED = "enable"
+CHECK_EVERYTHING = "all"
 
 CHECKS_SEP = ","
 KNOWN_CHECKS = (
@@ -96,6 +103,10 @@ ACTIONS = {  # group by arity of actions to simplify processing below
 }
 CONSTANT_DIMENSIONS = tuple(ACTIONS.keys())[:CONSTANT_ACTIONS]
 
+CPPCHECK_NO_PATHS_OPENED_INDICATOR = (
+    "cppcheck: error: could not find or open any of the paths given."
+)
+
 
 def split_csv(text):
     """Naive split of text as comma separated check aspects yielding as-input case strings."""
@@ -127,7 +138,7 @@ def command(dsl=None, actions=None, checks_sep=CHECKS_SEP, constant_dimensions=C
     actions = ACTIONS if actions is None else actions
 
     vector = [
-        "cppcheck",
+        SCA_EXECUTOR,
         f"--enable={checks_sep.join(parse_checks(dsl))}",
     ]
 
@@ -140,32 +151,68 @@ def command(dsl=None, actions=None, checks_sep=CHECKS_SEP, constant_dimensions=C
     return vector
 
 
-def run(vector, where=".", show_version=None, show_help=None):
+def display_sca_executor_version():
+    """Capture current behavior and document tool version."""
+    return subprocess.run((SCA_EXECUTOR, "--version"), capture_output=True, check=True)
+
+
+def display_sca_executor_help():
+    """Capture current behavior and document tool version."""
+    return subprocess.run((SCA_EXECUTOR, "--help"), capture_output=True, check=True)
+
+
+def run(vector, where=SOURCE_ROOT, show_version=False, show_help=False):
     """Execute the command in a sub process."""
-    show_version = show_version is None
-    show_help = show_help is None
+    if show_version:
+        print("retrieving cppcheck version")
+        completed = display_sca_executor_version()
+        print(" ", completed.stdout.decode(ENCODING, errors="ignore").strip())
+
+    if show_help:
+        print("retrieving cppcheck help")
+        completed = display_sca_executor_help()
+        for line in completed.stdout.decode(ENCODING, errors="ignore").split("\n"):
+            print(" ", line)
+
     vector.append(f"--output-file={DSL[OUTPUT_FILE]}")
     vector.append(f"{where}")
-    print("--------------------------------------")
-    print(f"given command: {' '.join(vector)}")
+    print("executing static code analysis")
+    print(f"  effective command: {' '.join(vector)}")
+    print("output from analysis")
+    try:
+        completed = subprocess.run(vector, capture_output=True, check=True)
+    except FileNotFoundError as err:
+        print("command not found?", err)
+        return 1
+    except subprocess.CalledProcessError as err:
+        print("source root not found?", err)
+        return 1
 
-#     if show_version:
-#         print("checking version")
-#         subprocess.call("cppcheck --version", shell=True)
+    if not completed.returncode:  # currently cppcheck is happy to find no source file
+        print("errors from execution")
 
-#     if show_help:
-#         subprocess.call("cppcheck --help", shell=True)
+    lines = completed.stdout.decode(ENCODING, errors="ignore").split("\n")
 
-    subprocess.call(vector, shell=True)
+    for line in lines:
+        print(" ", line)
+
+    if lines[0].strip() == CPPCHECK_NO_PATHS_OPENED_INDICATOR:
+        print("no source files found during execution?")
+
+    if completed.stderr:
+        print("captured output on standard error:")
+        for line in completed.stderr.decode(ENCODING, errors="ignore").split("\n"):
+            print(" ", line)
+    return None
 
 
 def main():
     """Drive the parameter extraction and execution of cppcheck."""
     if all((GITHUB_EVENT_NAME == "pull_request", GITHUB_ACTOR != GITHUB_REPOSITORY_OWNER)):
-        return
+        return 2
 
-    run(command())
+    return run(command(), SOURCE_ROOT, DISPLAY_SCA_VERSION, DISPLAY_SCA_HELP)
 
 
 if __name__ == "__main__":
-    main()  # pragma: no cover
+    sys.exit(main())  # pragma: no cover
