@@ -1,6 +1,6 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![cppcheck-action](https://socialify.git.ci/deep5050/cppcheck-action/image?description=1&logo=https%3A%2F%2Fi.imgur.com%2FbDs8nfo.png&theme=Light)
 
@@ -174,6 +174,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://badereddineouaich.herokuapp.com"><img src="https://avatars2.githubusercontent.com/u/49657842?v=4" width="100px;" alt=""/><br /><sub><b>Bader</b></sub></a><br /><a href="https://github.com/deep5050/cppcheck-action/commits?author=BaderEddineOuaich" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://stefan-hagen.website"><img src="https://avatars1.githubusercontent.com/u/450800?v=4" width="100px;" alt=""/><br /><sub><b>Stefan Hagen</b></sub></a><br /><a href="#infra-sthagen" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/deep5050/cppcheck-action/commits?author=sthagen" title="Tests">⚠️</a> <a href="https://github.com/deep5050/cppcheck-action/commits?author=sthagen" title="Code">💻</a></td>
   </tr>
 </table>
 
