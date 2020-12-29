@@ -13,6 +13,17 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "sthagen",
+      "name": "Stefan Hagen",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/450800?v=4",
+      "profile": "https://stefan-hagen.website",
+      "contributions": [
+        "infra",
+        "test",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
