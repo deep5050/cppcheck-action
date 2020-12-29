@@ -13,6 +13,15 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "DomAmato",
+      "name": "Dominic Amato",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6936055?v=4",
+      "profile": "http://www.domamatoart.com",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
