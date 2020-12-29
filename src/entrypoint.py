@@ -96,7 +96,7 @@ ACTIONS = {  # group by arity of actions to simplify processing below
     INLINE_SUPPRESSION: (operator.eq, ENABLED, "--inline-suppr"),
     ENABLE_INCONCLUSIVE: (operator.ne, DISABLED, "--inconclusive"),
     # unary actions:
-    EXCLUDE_CHECK: (operator.ne, DISABLED, "-i {}"),
+    EXCLUDE_CHECK: (operator.ne, DISABLED, "-i{}"),  # Newer versions of cppcheck (>1.9) do not accept a space here
     ENFORCE_LANGUAGE: (operator.ne, DISABLED, "--language={}"),
     MAX_CTU_DEPTH: (operator.ne, DISABLED, "--max-ctu-depth={}"),
     PLATFORM_TYPE: (operator.ne, DISABLED, "--platform={}"),
