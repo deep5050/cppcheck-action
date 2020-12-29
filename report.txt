@@ -7,6 +7,24 @@ __tests__/client/client.c:56:9: style: The scope of the variable 'rcvd_bytes' ca
 __tests__/client/client.c:86:92: style: The scope of the variable 'n' can be reduced. [variableScope]
     int opt, port, debug_level, connect_status, sent_bytes, recv_bytes, temp_return_value, n;
                                                                                            ^
+__tests__/fibonacci.c:21:21: style: The scope of the variable 'first' can be reduced. [variableScope]
+    static long int first = 0, second = 1, sum;
+                    ^
+__tests__/fibonacci.c:21:32: style: The scope of the variable 'second' can be reduced. [variableScope]
+    static long int first = 0, second = 1, sum;
+                               ^
+__tests__/fibonacci.c:21:44: style: The scope of the variable 'sum' can be reduced. [variableScope]
+    static long int first = 0, second = 1, sum;
+                                           ^
+__tests__/fibonacci.c:9:16: style: Variable 'i' is assigned a value that is never used. [unreadVariable]
+    long int i = 0, j = 1;
+               ^
+__tests__/fibonacci.c:9:23: style: Variable 'j' is assigned a value that is never used. [unreadVariable]
+    long int i = 0, j = 1;
+                      ^
+__tests__/fibonacci.c:8:9: style: Unused variable: k [unusedVariable]
+    int k, n;
+        ^
 __tests__/server/server.c:115:9: style: The scope of the variable 'client_fd' can be reduced. [variableScope]
     int client_fd, server_status, bind_status, listen_status, accept_status,
         ^
