@@ -12,13 +12,15 @@ jobs:
         uses: ./
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
-          max_ctu_depth: 4
+          max_ctu_depth: 9
           skip_preprocessor: disable
           check_library: disable
           inconclusive: enable
           inline_suppression: disable
           platform: disable
-          output_file: "./report.txt"
+          output_file: ./report.txt
+          force_language: c
+          exclude_check: ./__tests__/exclude/
         
       - name: publish report    
         uses: mikeal/publish-to-github-action@master
