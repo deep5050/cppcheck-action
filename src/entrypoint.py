@@ -111,13 +111,15 @@ ACTIONS = {  # group by arity of actions to simplify processing below
     SKIP_PREPROCESSOR: (operator.eq, ENABLED, "-E", None),
     INLINE_SUPPRESSION: (operator.eq, ENABLED, "--inline-suppr", None),
     ENABLE_INCONCLUSIVE: (operator.ne, DISABLED, "--inconclusive", None),
+    
     # unary actions:
-    EXCLUDE_CHECK: (operator.ne, DISABLED, "-i {}", None),
+    EXCLUDE_CHECK: (operator.ne, DISABLED, "-i{}"),  # Newer versions of cppcheck (>1.9) do not accept a space here
     ENFORCE_LANGUAGE: (operator.ne, DISABLED, "--language={}", None),
     MAX_CTU_DEPTH: (operator.ne, DISABLED, "--max-ctu-depth={}", None),
     PLATFORM_TYPE: (operator.ne, DISABLED, "--platform={}", None),
     OTHER_OPTIONS: (operator.ne, DISABLED, "{}", split_other_options),
 }
+
 CONSTANT_DIMENSIONS = tuple(ACTIONS.keys())[:CONSTANT_ACTIONS]
 
 CPPCHECK_NO_PATHS_OPENED_INDICATOR = (
