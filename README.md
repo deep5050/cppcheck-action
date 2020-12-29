@@ -1,10 +1,10 @@
-
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 ![cppcheck-action](https://socialify.git.ci/deep5050/cppcheck-action/image?description=1&logo=https%3A%2F%2Fi.imgur.com%2FbDs8nfo.png&theme=Light)
-
-
 
 <div align=center>
 <p align=center>
@@ -14,13 +14,11 @@
 
 </div>
 
-
 ## [subscribe to service updates](https://github.com/deep5050/cppcheck-action/issues/11)
 
 > ** Please participate on this
 > [poll](https://github.com/deep5050/cppcheck-action/issues/10) for a feature
 > planned by me **
-
 
 ## What is cppcheck?
 
@@ -46,18 +44,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-          
+
       - name: cppcheck
         uses: deep5050/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
-          
-        
-      - name: publish report    
+
+      - name: publish report
         uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: 'main' # your branch name goes here
+          BRANCH_NAME: "main" # your branch name goes here
 ```
 
 ### Advanced configuration
@@ -87,11 +84,11 @@ jobs:
           platform:
           output_file:
 
-      - name: publish report    
+      - name: publish report
         uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: 'main' # your branch name goes here
+          BRANCH_NAME: "main" # your branch name goes here
 ```
 
 ### Input options
@@ -166,7 +163,8 @@ from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks goes to these wonderful people
+([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -180,6 +178,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the
+[all-contributors](https://github.com/all-contributors/all-contributors)
+specification. Contributions of any kind welcome!
