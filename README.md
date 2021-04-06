@@ -85,6 +85,7 @@ jobs:
           force_language:
           max_ctu_depth:
           platform:
+          std:
           output_file:
 
       - name: publish report    
@@ -121,6 +122,8 @@ cppcheck-suppress warningId'.
 `force_language` : Forces cppcheck to check all files as the given language.
 Valid values are: `c`, `c++` .
 
+`force` : `enable`, default value is `disable`. Force checking of all configurations in files.
+
 `max_ctu_depth` : Max depth in whole program analysis. The default value is 2. A
 larger value will mean more errors can be found but also means the analysis will
 be slower. Example : `4`.
@@ -128,6 +131,8 @@ be slower. Example : `4`.
 `platform` : Specifies platform specific types and sizes. The available builtin
 platforms are: `unix32` ,`unix64` , `win32A` , `win32W` ,`win64` ,`avr8` ,
 `native`.
+
+`std` : Specifies the C/C++ standard version: `c89` ,`c99` , `c11` , `c++11` ,`c++14` ,`c++17`, `c++20`.
 
 `output_file` : Give a filename for the output report. Default is
 `./cppcheck_report.txt`

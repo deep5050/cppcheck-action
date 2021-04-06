@@ -67,11 +67,13 @@ SKIP_PREPROCESSOR = "INPUT_SKIP_PREPROCESSOR"
 ENABLE_CHECKS = "INPUT_ENABLE"
 EXCLUDE_CHECK = "INPUT_EXCLUDE_CHECK"
 ENABLE_INCONCLUSIVE = "INPUT_INCONCLUSIVE"
+FORCE = "INPUT_FORCE"
 INLINE_SUPPRESSION = "INPUT_INLINE_SUPPRESSION"
 ENFORCE_LANGUAGE = "INPUT_FORCE_LANGUAGE"
 MAX_CTU_DEPTH = "INPUT_MAX_CTU_DEPTH"
 OUTPUT_FILE = "INPUT_OUTPUT_FILE"
 PLATFORM_TYPE = "INPUT_PLATFORM"
+STD = "INPUT_STD"
 
 # Main interface map for cppcheck instrumentation and outputs:
 DSL = {
@@ -80,11 +82,13 @@ DSL = {
     ENABLE_CHECKS: os.getenv(ENABLE_CHECKS, CHECK_EVERYTHING),
     EXCLUDE_CHECK: os.getenv(EXCLUDE_CHECK, DISABLED),
     ENABLE_INCONCLUSIVE: os.getenv(ENABLE_INCONCLUSIVE, ENABLED),
+    FORCE: os.getenv(FORCE, DISABLED),
     INLINE_SUPPRESSION: os.getenv(INLINE_SUPPRESSION, DISABLED),
     ENFORCE_LANGUAGE: os.getenv(ENFORCE_LANGUAGE, DISABLED),
     MAX_CTU_DEPTH: os.getenv(MAX_CTU_DEPTH, DISABLED),
     OUTPUT_FILE: os.getenv(OUTPUT_FILE, "cppcheck_report.txt"),
     PLATFORM_TYPE: os.getenv(PLATFORM_TYPE, DISABLED),
+    STD: os.getenv(STD, DISABLED),
 }
 
 # Prepare actions to be taken using the above environment interface map:
@@ -95,11 +99,13 @@ ACTIONS = {  # group by arity of actions to simplify processing below
     SKIP_PREPROCESSOR: (operator.eq, ENABLED, "-E"),
     INLINE_SUPPRESSION: (operator.eq, ENABLED, "--inline-suppr"),
     ENABLE_INCONCLUSIVE: (operator.ne, DISABLED, "--inconclusive"),
+    FORCE: (operator.ne, DISABLED, "--force"),
     # unary actions:
     EXCLUDE_CHECK: (operator.ne, DISABLED, "-i{}"),  # Newer versions of cppcheck (>1.9) do not accept a space here
     ENFORCE_LANGUAGE: (operator.ne, DISABLED, "--language={}"),
     MAX_CTU_DEPTH: (operator.ne, DISABLED, "--max-ctu-depth={}"),
     PLATFORM_TYPE: (operator.ne, DISABLED, "--platform={}"),
+    STD: (operator.ne, DISABLED, "--std={}"),
 }
 CONSTANT_DIMENSIONS = tuple(ACTIONS.keys())[:CONSTANT_ACTIONS]
 
