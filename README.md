@@ -83,6 +83,7 @@ jobs:
           inconclusive:
           inline_suppression:
           force_language:
+          force:
           max_ctu_depth:
           platform:
           std:
@@ -132,7 +133,7 @@ be slower. Example : `4`.
 platforms are: `unix32` ,`unix64` , `win32A` , `win32W` ,`win64` ,`avr8` ,
 `native`.
 
-`std` : Specifies the C/C++ standard version: `c89` ,`c99` , `c11` , `c++11` ,`c++14` ,`c++17`, `c++20`.
+`std` : Set the C/C++ standard: `c89` ,`c99` , `c11` , `c++11` ,`c++14` ,`c++17`, `c++20`.
 
 `output_file` : Give a filename for the output report. Default is
 `./cppcheck_report.txt`
