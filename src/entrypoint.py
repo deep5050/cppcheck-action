@@ -25,7 +25,8 @@ INPUT_GITHUB_TOKEN = os.environ["INPUT_GITHUB_TOKEN"]
 
 # Derive from environment with defaults:
 # TODO: How about PRs from forks?
-INPUT_TARGET_REPOSITORY = os.getenv("INPUT_TARGET_REPOSITORY", CURRENT_REPOSITORY)
+INPUT_TARGET_REPOSITORY = os.getenv(
+    "INPUT_TARGET_REPOSITORY", CURRENT_REPOSITORY)
 INPUT_PULL_REQUEST_REPOSITORY = os.getenv(
     "INPUT_PULL_REQUEST_REPOSITORY", INPUT_TARGET_REPOSITORY
 )
@@ -37,7 +38,8 @@ REPOSITORY = (
 
 CURRENT_BRANCH = GITHUB_HEAD_REF or GITHUB_REF.rsplit("/", 1)[-1]
 INPUT_TARGET_BRANCH = os.getenv("INPUT_TARGET_BRANCH", CURRENT_BRANCH)
-INPUT_PULL_REQUEST_BRANCH = os.getenv("INPUT_PULL_REQUEST_BRANCH", GITHUB_BASE_REF)
+INPUT_PULL_REQUEST_BRANCH = os.getenv(
+    "INPUT_PULL_REQUEST_BRANCH", GITHUB_BASE_REF)
 BRANCH = (
     INPUT_PULL_REQUEST_BRANCH
     if GITHUB_EVENT_NAME == "pull_request"
@@ -101,7 +103,8 @@ ACTIONS = {  # group by arity of actions to simplify processing below
     ENABLE_INCONCLUSIVE: (operator.ne, DISABLED, "--inconclusive"),
     FORCE: (operator.ne, DISABLED, "--force"),
     # unary actions:
-    EXCLUDE_CHECK: (operator.ne, DISABLED, "-i{}"),  # Newer versions of cppcheck (>1.9) do not accept a space here
+    # Newer versions of cppcheck (>1.9) do not accept a space here
+    EXCLUDE_CHECK: (operator.ne, DISABLED, "-i{}"),
     ENFORCE_LANGUAGE: (operator.ne, DISABLED, "--language={}"),
     MAX_CTU_DEPTH: (operator.ne, DISABLED, "--max-ctu-depth={}"),
     PLATFORM_TYPE: (operator.ne, DISABLED, "--platform={}"),
@@ -152,7 +155,8 @@ def command(dsl=None, actions=None, checks_sep=CHECKS_SEP, constant_dimensions=C
         predicate, ref, template = actions[dim]
         payload = dsl[dim]
         if predicate(payload, ref):
-            vector.append(template if dim in constant_dimensions else template.format(payload))
+            vector.append(
+                template if dim in constant_dimensions else template.format(payload))
 
     return vector
 
