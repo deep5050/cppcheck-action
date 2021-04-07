@@ -25,25 +25,19 @@ INPUT_GITHUB_TOKEN = os.environ["INPUT_GITHUB_TOKEN"]
 
 # Derive from environment with defaults:
 # TODO: How about PRs from forks?
-INPUT_TARGET_REPOSITORY = os.getenv("INPUT_TARGET_REPOSITORY", CURRENT_REPOSITORY)
-INPUT_PULL_REQUEST_REPOSITORY = os.getenv(
-    "INPUT_PULL_REQUEST_REPOSITORY", INPUT_TARGET_REPOSITORY
-)
-REPOSITORY = (
-    INPUT_PULL_REQUEST_REPOSITORY
-    if GITHUB_EVENT_NAME == "pull_request"
-    else INPUT_TARGET_REPOSITORY
-)
+INPUT_TARGET_REPOSITORY = os.getenv("INPUT_TARGET_REPOSITORY",
+                                    CURRENT_REPOSITORY)
+INPUT_PULL_REQUEST_REPOSITORY = os.getenv("INPUT_PULL_REQUEST_REPOSITORY",
+                                          INPUT_TARGET_REPOSITORY)
+REPOSITORY = (INPUT_PULL_REQUEST_REPOSITORY if GITHUB_EVENT_NAME
+              == "pull_request" else INPUT_TARGET_REPOSITORY)
 
 CURRENT_BRANCH = GITHUB_HEAD_REF or GITHUB_REF.rsplit("/", 1)[-1]
 INPUT_TARGET_BRANCH = os.getenv("INPUT_TARGET_BRANCH", CURRENT_BRANCH)
-INPUT_PULL_REQUEST_BRANCH = os.getenv("INPUT_PULL_REQUEST_BRANCH", GITHUB_BASE_REF)
-BRANCH = (
-    INPUT_PULL_REQUEST_BRANCH
-    if GITHUB_EVENT_NAME == "pull_request"
-    else INPUT_TARGET_BRANCH
-)
-
+INPUT_PULL_REQUEST_BRANCH = os.getenv("INPUT_PULL_REQUEST_BRANCH",
+                                      GITHUB_BASE_REF)
+BRANCH = (INPUT_PULL_REQUEST_BRANCH
+          if GITHUB_EVENT_NAME == "pull_request" else INPUT_TARGET_BRANCH)
 
 # Define cppcheck specific vocabulary for switches:
 DISABLED = "disable"
@@ -111,8 +105,7 @@ ACTIONS = {  # group by arity of actions to simplify processing below
 CONSTANT_DIMENSIONS = tuple(ACTIONS.keys())[:CONSTANT_ACTIONS]
 
 CPPCHECK_NO_PATHS_OPENED_INDICATOR = (
-    "cppcheck: error: could not find or open any of the paths given."
-)
+    "cppcheck: error: could not find or open any of the paths given.")
 
 
 def split_csv(text):
@@ -158,21 +151,24 @@ def command(
         predicate, ref, template = actions[dim]
         payload = dsl[dim]
         if predicate(payload, ref):
-            vector.append(
-                template if dim in constant_dimensions else template.format(payload)
-            )
+            vector.append(template if dim in
+                          constant_dimensions else template.format(payload))
 
     return vector
 
 
 def display_sca_executor_version():
     """Capture current behavior and document tool version."""
-    return subprocess.run((SCA_EXECUTOR, "--version"), capture_output=True, check=True)
+    return subprocess.run((SCA_EXECUTOR, "--version"),
+                          capture_output=True,
+                          check=True)
 
 
 def display_sca_executor_help():
     """Capture current behavior and document tool version."""
-    return subprocess.run((SCA_EXECUTOR, "--help"), capture_output=True, check=True)
+    return subprocess.run((SCA_EXECUTOR, "--help"),
+                          capture_output=True,
+                          check=True)
 
 
 def run(vector, where=SOURCE_ROOT, show_version=False, show_help=False):
@@ -185,7 +181,8 @@ def run(vector, where=SOURCE_ROOT, show_version=False, show_help=False):
     if show_help:
         print("retrieving cppcheck help")
         completed = display_sca_executor_help()
-        for line in completed.stdout.decode(ENCODING, errors="ignore").split("\n"):
+        for line in completed.stdout.decode(ENCODING,
+                                            errors="ignore").split("\n"):
             print(" ", line)
 
     vector.append(f"--output-file={DSL[OUTPUT_FILE]}")
@@ -215,16 +212,16 @@ def run(vector, where=SOURCE_ROOT, show_version=False, show_help=False):
 
     if completed.stderr:
         print("captured output on standard error:")
-        for line in completed.stderr.decode(ENCODING, errors="ignore").split("\n"):
+        for line in completed.stderr.decode(ENCODING,
+                                            errors="ignore").split("\n"):
             print(" ", line)
     return None
 
 
 def main():
     """Drive the parameter extraction and execution of cppcheck."""
-    if all(
-        (GITHUB_EVENT_NAME == "pull_request", GITHUB_ACTOR != GITHUB_REPOSITORY_OWNER)
-    ):
+    if all((GITHUB_EVENT_NAME == "pull_request",
+            GITHUB_ACTOR != GITHUB_REPOSITORY_OWNER)):
         return 2
 
     return run(command(), SOURCE_ROOT, DISPLAY_SCA_VERSION, DISPLAY_SCA_HELP)
