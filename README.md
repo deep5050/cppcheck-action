@@ -98,45 +98,20 @@ jobs:
 
 ### Input options
 
-`check_library` : `enable` Show information messages when library files have
-incomplete info.
-
-`skip_preprocessor` : `enable` Print preprocessor output on stdout and don't do
-any further processing.
-
-`enable` : Enable additional checks. The available ids are: `all`, `warning`
-,`style` , `performance` , `portability` ,`information` , `unusedFunction`
-,`missingInclude` . Default value is `all` if you want to enable multiple
-checking at once, separate them using `,` without any blank space. example:
-`style,warning,performance`.
-
-`exclude_check` : Give a file or directory path to exclude from checking.
-example: `./no_check.cpp`
-
-`inconclusive` : `disable`, default value is `enable` . Allow that Cppcheck
-reports even though the analysis is inconclusive.
-
-`inline_suppression`: `enable` , default is `disable` . Enable inline
-suppressions. Use them by placing one or more comments, like: '//
-cppcheck-suppress warningId'.
-
-`force_language` : Forces cppcheck to check all files as the given language.
-Valid values are: `c`, `c++` .
-
-`force` : `enable`, default value is `disable`. Force checking of all configurations in files.
-
-`max_ctu_depth` : Max depth in whole program analysis. The default value is 2. A
-larger value will mean more errors can be found but also means the analysis will
-be slower. Example : `4`.
-
-`platform` : Specifies platform specific types and sizes. The available builtin
-platforms are: `unix32` ,`unix64` , `win32A` , `win32W` ,`win64` ,`avr8` ,
-`native`.
-
-`std` : Set the C/C++ standard: `c89` ,`c99` , `c11` , `c++11` ,`c++14` ,`c++17`, `c++20`.
-
-`output_file` : Give a filename for the output report. Default is
-`./cppcheck_report.txt`
+| Option  | Value | Description | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| <strong>check_library</strong>  | `enable`, `disable` | Show information messages when library files have incomplete info | `disable` |
+| <strong>skip_preprocessor</strong> | `enable`, `disable` | Print preprocessor output on stdout and don't do any further processing | `disable` |
+| <strong>enable</strong> | `all`, `warning`, `style`, `performance`, `portability`, `information` ,`unusedFunction` ,`missingInclude` | Enable additional checks. if you want to enable multiple checking at once, separate them using `,` without any blank space. example: `style,warning,performance`. | `all` |
+| <strong>exclude_check</strong> | `./path/to/ignore` | Give a file or directory path to exclude from checking. example: `./no_check.cpp` | nothing to ignore |
+| <strong>inconclusive</strong> | `enable`, `disable` | Allow that Cppcheck reports even though the analysis is inconclusive | `enable` |
+| <strong>inline_suppression</strong> | `enable`, `disable` | Enable inline suppressions. Use them by placing one or more comments, like: '// cppcheck-suppress warningId' | `disable` |
+| <strong>force_language</strong> | `c`, `c++` | Forces cppcheck to check all files as the given language. Valid values are: `c`, `c++` | auto-detected |
+| <strong>force</strong> | `enable`, `disable` | Force checking of all configurations in files | `disable` |
+| <strong>max_ctu_depth</strong> | `number` | Max depth in whole program analysis. A larger value will mean more errors can be found but also means the analysis will be slower. example: `4` | `2` |
+| <strong>platform</strong> | `unix32`, `unix64`, `win32A`, `win32W`, `win64`, `avr8`, `native` | Specifies platform specific types and sizes | `unspecified` |
+| <strong>std</strong> | `c89` ,`c99` , `c11` , `c++11` ,`c++14` ,`c++17`, `c++20` | Set the C/C++ standard | `c++20` |
+| <strong>output_file</strong> | `./path/to/output/file.txt` | Give a filename for the output report | `./cppcheck_report.txt` |
 
 <b> For further details check
 [cppcheck documentations](http://cppcheck.sourceforge.net/manual.pdf) </b>
