@@ -173,12 +173,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://badereddineouaich.herokuapp.com"><img src="https://avatars2.githubusercontent.com/u/49657842?v=4" width="100px;" alt=""/><br /><sub><b>Bader</b></sub></a><br /><a href="https://github.com/deep5050/cppcheck-action/commits?author=BaderEddineOuaich" title="Tests">⚠️</a></td>
+    <td align="center"><a href="http://badereddineouaich.herokuapp.com"><img src="https://avatars2.githubusercontent.com/u/49657842?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bader</b></sub></a><br /><a href="https://github.com/deep5050/cppcheck-action/commits?author=BaderEddineOuaich" title="Tests">⚠️</a> <a href="https://github.com/deep5050/cppcheck-action/commits?author=BaderEddineOuaich" title="Code">💻</a> <a href="https://github.com/deep5050/cppcheck-action/commits?author=BaderEddineOuaich" title="Documentation">📖</a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
