@@ -52,6 +52,11 @@ inputs:
     default: "disable"
     required: false
 
+  force:
+    description: "Force checking of all configurations in files"
+    default: "disable"
+    required: false
+
   max_ctu_depth:
     description: "Max depth in whole program analysis"
     default: "disable"
@@ -62,10 +67,16 @@ inputs:
     default: "disable"
     required: false
 
+  std:
+    description: "Set the C/C++ standard"
+    default: "c++20"
+    required: false
+
   output_file:
-    description: " files where the result to be dumped"
+    description: "file where the result to be dumped"
     default: "cppcheck_report.txt"
     required: false
+
   target_branch:
     description: "Branch that the badge will target. Defaults to the current branch."
     default: ""
