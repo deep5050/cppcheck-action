@@ -99,19 +99,20 @@ jobs:
 ### Input options
 
 | Option | Value | Description | Default |
-| :--- | :---: | :--- | :---: |
+| :--- | :--- | :--- | :--- |
 | **check_library**  | `enable`, `disable` | Show information messages when library files have incomplete info | `disable` |
 | **skip_preprocessor** | `enable`, `disable` | Print preprocessor output on stdout and don't do any further processing | `disable` |
-| **enable** | `all`, `warning`, `style`, `performance`, `portability`, `information` ,`unusedFunction` ,`missingInclude` | Enable additional checks. if you want to enable multiple checking at once, separate them using `,` without any blank space. example: `style,warning,performance` | `all` |
+| **enable** | `all`, `warning`, `style`, `performance`, `portability`, `information`, `unusedFunction`, `missingInclude` | Enable additional checks. if you want to enable multiple checking at once, separate them using `,` without any blank space. example: `style,warning,performance` | `all` |
 | **exclude_check** | `./path/to/ignore` | Give a file or directory path to exclude from checking. example: `./no_check.cpp` | nothing to ignore |
 | **inconclusive** | `enable`, `disable` | Allow that Cppcheck reports even though the analysis is inconclusive | `enable` |
 | **inline_suppression** | `enable`, `disable` | Enable inline suppressions. Use them by placing one or more comments, like: '// cppcheck-suppress warningId' | `disable` |
 | **force_language** | `c`, `c++` | Forces cppcheck to check all files as the given language. Valid values are: `c`, `c++` | auto-detected |
 | **force** | `enable`, `disable` | Force checking of all configurations in files | `disable` |
 | **max_ctu_depth** | `number` | Max depth in whole program analysis. A larger value will mean more errors can be found but also means the analysis will be slower. example: `4` | `2` |
-| **platform** | `unix32`, `unix64`, `win32A`, `win32W`, `win64`, `avr8`, `native` | Specifies platform specific types and sizes | `unspecified` |
-| **std** | `c89` ,`c99` , `c11` , `c++11` ,`c++14` ,`c++17`, `c++20` | Set the C/C++ standard | `c++20` |
+| **platform** | `unix32`, `unix64`, `win32A`, `win32W`, `win64`, `avr8`, `elbrus-e1cp`, `pic8`, `pic8-enhanced`, `pic16`, `mips32`, `native`, `unspecified`, | Specifies platform specific types and sizes | `unspecified` |
+| **std** | `c89`, `c99`, `c11`, `c++11`, `c++14`, `c++17`, `c++20` | Set the C/C++ standard | `c11`, `c++20` |
 | **output_file** | `./path/to/output/file.txt` | Give a filename for the output report | `./cppcheck_report.txt` |
+
 
 <b> For further details check
 [cppcheck documentations](http://cppcheck.sourceforge.net/manual.pdf) </b>
