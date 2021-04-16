@@ -25,7 +25,8 @@ INPUT_GITHUB_TOKEN = os.environ["INPUT_GITHUB_TOKEN"]
 
 # Derive from environment with defaults:
 # TODO: How about PRs from forks?
-INPUT_TARGET_REPOSITORY = os.getenv("INPUT_TARGET_REPOSITORY", CURRENT_REPOSITORY)
+INPUT_TARGET_REPOSITORY = os.getenv(
+    "INPUT_TARGET_REPOSITORY", CURRENT_REPOSITORY)
 INPUT_PULL_REQUEST_REPOSITORY = os.getenv(
     "INPUT_PULL_REQUEST_REPOSITORY", INPUT_TARGET_REPOSITORY
 )
@@ -37,7 +38,8 @@ REPOSITORY = (
 
 CURRENT_BRANCH = GITHUB_HEAD_REF or GITHUB_REF.rsplit("/", 1)[-1]
 INPUT_TARGET_BRANCH = os.getenv("INPUT_TARGET_BRANCH", CURRENT_BRANCH)
-INPUT_PULL_REQUEST_BRANCH = os.getenv("INPUT_PULL_REQUEST_BRANCH", GITHUB_BASE_REF)
+INPUT_PULL_REQUEST_BRANCH = os.getenv(
+    "INPUT_PULL_REQUEST_BRANCH", GITHUB_BASE_REF)
 BRANCH = (
     INPUT_PULL_REQUEST_BRANCH
     if GITHUB_EVENT_NAME == "pull_request"
@@ -101,7 +103,8 @@ def split_other_options(text):
     if OTHERS_SEP in text:
         is_first = True
         for entry in text.split(OTHERS_SEP):
-            yield entry.strip() if is_first else f'-{entry.strip()}'  # other entries lose dash
+            # other entries lose dash
+            yield entry.strip() if is_first else f'-{entry.strip()}'
             is_first = False
     else:
         yield text.strip()
@@ -115,9 +118,10 @@ ACTIONS = {  # group by arity of actions to simplify processing below
     SKIP_PREPROCESSOR: (operator.eq, ENABLED, "-E", None),
     INLINE_SUPPRESSION: (operator.eq, ENABLED, "--inline-suppr", None),
     ENABLE_INCONCLUSIVE: (operator.ne, DISABLED, "--inconclusive", None),
-    
+
     # unary actions:
-    EXCLUDE_CHECK: (operator.ne, DISABLED, "-i{}"),  # Newer versions of cppcheck (>1.9) do not accept a space here
+    # Newer versions of cppcheck (>1.9) do not accept a space here
+    EXCLUDE_CHECK: (operator.ne, DISABLED, "-i{}"),
     ENFORCE_LANGUAGE: (operator.ne, DISABLED, "--language={}", None),
     MAX_CTU_DEPTH: (operator.ne, DISABLED, "--max-ctu-depth={}", None),
     PLATFORM_TYPE: (operator.ne, DISABLED, "--platform={}", None),
@@ -170,11 +174,11 @@ def command(dsl=None, actions=None, checks_sep=CHECKS_SEP, constant_dimensions=C
         payload = dsl[dim]
         if predicate(payload, ref):
             if not processing:
-                vector.append(template if dim in constant_dimensions else template.format(payload))
+                vector.append(
+                    template if dim in constant_dimensions else template.format(payload))
             else:  # implicit dim not in constant_dimension
                 for chunk in processing(payload):
                     vector.append(template.format(chunk))
-
 
     return vector
 
