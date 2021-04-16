@@ -1,0 +1,206 @@
+__tests__/client/client.c:102:32: error: Cannot determine that 'argv[0]' is initialized [bughuntingUninit]
+    while ((opt = getopt(argc, argv, "-a:p:D:n:")) != -1)
+                               ^
+__tests__/client/client.c:174:44: error: Cannot determine that 'server_ip' is initialized [bughuntingUninit]
+    temp_return_value = inet_pton(AF_INET, server_ip, &server_addr.sin_addr);
+                                           ^
+__tests__/client/client.c:196:61: error: Cannot determine that 'server_addr' is initialized [bughuntingUninit]
+    connect_status = connect(client_fd, (struct sockaddr *)&server_addr, sizeof(server_addr));
+                                                            ^
+__tests__/client/client.c:205:35: error: Cannot determine that 'name' is initialized [bughuntingUninit]
+    sent_bytes = send(client_fd, &name, strlen(name), 0);
+                                  ^
+__tests__/client/client.c:214:35: error: Cannot determine that 'greetings_from_server' is initialized [bughuntingUninit]
+    recv_bytes = recv(client_fd, &greetings_from_server, sizeof(greetings_from_server), 0);
+                                  ^
+__tests__/client/client.c:223:31: error: Cannot determine that 'greetings_from_server' is initialized [bughuntingUninit]
+        LOG(_LOG_INFO_, "%s", greetings_from_server);
+                              ^
+__tests__/client/client.c:233:31: error: Cannot determine that 'name' is initialized [bughuntingUninit]
+    strncpy(thread_args.name, name, strlen(name));
+                              ^
+__tests__/client/client.c:235:63: error: Cannot determine that 'thread_args' is initialized [bughuntingUninit]
+    if (pthread_create(&t_id, NULL, rcv_msg_handler, (void *)&thread_args) != 0)
+                                                              ^
+__tests__/client/client.c:246:15: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+        bzero(buff, MAX_MSG_LEN);
+              ^
+__tests__/client/client.c:248:47: error: Cannot determine that 'name' is initialized [bughuntingUninit]
+        printf("\x1b[35m%s@SERVER:~$\x1b[0m", name); /* virtual terminal */
+                                              ^
+__tests__/client/client.c:254:23: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+        strip_newline(buff);
+                      ^
+__tests__/client/client.c:255:21: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+        if (!strlen(buff) || !strncmp(buff, " ", 1) || !strncmp(buff, "\n", 1))
+                    ^
+__tests__/client/client.c:262:22: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+        if (!strncmp(buff, "/help", 5))
+                     ^
+__tests__/client/client.c:264:53: error: Cannot determine that 'name' is initialized [bughuntingUninit]
+            printf("\x1b[35m%s@SERVER:~$%s\x1b[0m", name, "1./connect <username>: to connect to a user 2./quit: to exit 3./help: to show this help message\n");
+                                                    ^
+__tests__/client/client.c:267:39: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+        sent_bytes = send(client_fd, &buff, sizeof(buff), 0); /* Send the message to the server */
+                                      ^
+__tests__/client/client.c:278:21: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+        if (strncmp(buff, "/quit", 5) == 0)
+                    ^
+__tests__/server/server.c:62:32: error: Cannot determine that 'argv[0]' is initialized [bughuntingUninit]
+    while ((opt = getopt(argc, argv, "-p:b:D:")) != -1)
+                               ^
+__tests__/server/server.c:141:42: error: Cannot determine that 'port' is initialized [bughuntingUninit]
+    if ((addr_status = getaddrinfo(NULL, port, &server_addr, &results)) != 0)
+                                         ^
+__tests__/server/server.c:141:49: error: Cannot determine that 'server_addr' is initialized [bughuntingUninit]
+    if ((addr_status = getaddrinfo(NULL, port, &server_addr, &results)) != 0)
+                                                ^
+__tests__/server/server.c:148:14: error: Cannot determine that 'results' is initialized [bughuntingUninit]
+    for (p = results; p != NULL; p = p->ai_next)
+             ^
+__tests__/server/server.c:151:45: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+        inet_ntop(p->ai_family, p->ai_addr, addr, sizeof(addr));
+                                            ^
+__tests__/server/server.c:152:50: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+        LOG(_LOG_INFO_, "Trying to build on %s", addr);
+                                                 ^
+__tests__/server/server.c:174:45: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+        inet_ntop(p->ai_family, p->ai_addr, addr, sizeof(addr));
+                                            ^
+__tests__/server/server.c:178:18: error: Cannot determine that 'results' is initialized [bughuntingUninit]
+    freeaddrinfo(results);
+                 ^
+__tests__/server/server.c:191:39: error: Cannot determine that 'backlog' is initialized [bughuntingUninit]
+    listen_status = listen(server_fd, backlog);
+                                      ^
+__tests__/server/server.c:199:66: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+    LOG(_LOG_INFO_, "UP and LISTENING on %s:%s with BACKLOG %d", addr, port, backlog);
+                                                                 ^
+__tests__/server/server.c:199:72: error: Cannot determine that 'port' is initialized [bughuntingUninit]
+    LOG(_LOG_INFO_, "UP and LISTENING on %s:%s with BACKLOG %d", addr, port, backlog);
+                                                                       ^
+__tests__/server/server.c:199:78: error: Cannot determine that 'backlog' is initialized [bughuntingUninit]
+    LOG(_LOG_INFO_, "UP and LISTENING on %s:%s with BACKLOG %d", addr, port, backlog);
+                                                                             ^
+__tests__/server/server.c:210:73: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+        inet_ntop(client_addr.sin_family, &client_addr.sin_addr.s_addr, addr, sizeof(addr));
+                                                                        ^
+__tests__/server/server.c:212:59: error: Cannot determine that 'client_addr' is initialized [bughuntingUninit]
+        client_fd = accept(server_fd, (struct sockaddr *)&client_addr, &client_addr_size);
+                                                          ^
+__tests__/server/server.c:220:65: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+        LOG(_LOG_INFO_, "NEW CLIENT: ID(%d): %s:%d", client_fd, addr, ntohs(client_addr.sin_port));
+                                                                ^
+__tests__/server/server.c:228:29: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
+        if (pthread_create(&t_id, NULL, service_clients, (void *)&thread_args) != 0)
+                            ^
+__tests__/server/server.c:228:67: error: Cannot determine that 'thread_args' is initialized [bughuntingUninit]
+        if (pthread_create(&t_id, NULL, service_clients, (void *)&thread_args) != 0)
+                                                                  ^
+__tests__/server/server.c:230:64: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
+            LOG(_LOG_ERR_, "couldn't create the Thread %ld\n", t_id);
+                                                               ^
+__tests__/server/server.c:236:76: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
+        LOG(_LOG_INFO_, "New thread created: %ld to service client ID %d", t_id, client_fd);
+                                                                           ^
+__tests__/server/server.c:237:24: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
+        pthread_detach(t_id);
+                       ^
+__tests__/server/server.c:238:40: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
+        threads_pool[++thread_count] = t_id;
+                                       ^
+__tests__/test.c:148:11: error: Cannot determine that 'argv[1]' is initialized [bughuntingUninit]
+  if (argv[1] == "" || argv[1] == NULL) {
+          ^
+__tests__/test.c:153:11: error: Cannot determine that 'argv[2]' is initialized [bughuntingUninit]
+  if (argv[2] == "" || argv[2] == NULL) {
+          ^
+__tests__/test.c:158:24: error: Cannot determine that 'argv[2]' is initialized [bughuntingUninit]
+  backlog = strtol(argv[2], &strptr, 10);
+                       ^
+__tests__/test.c:194:50: error: Cannot determine that 'server_addr' is initialized [bughuntingUninit]
+  if ((addr_status = getaddrinfo(NULL, argv[1], &server_addr, &results)) != 0) {
+                                                 ^
+__tests__/test.c:201:12: error: Cannot determine that 'results' is initialized [bughuntingUninit]
+  for (p = results; p != NULL; p = p->ai_next) {
+           ^
+__tests__/test.c:203:41: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+    inet_ntop(p->ai_family, p->ai_addr, addr, sizeof(addr));
+                                        ^
+__tests__/test.c:204:64: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+    printf("[%s] SERVER: Trying to build on: %s", timestamp(), addr);
+                                                               ^
+__tests__/test.c:231:16: error: Cannot determine that 'results' is initialized [bughuntingUninit]
+  freeaddrinfo(results);
+               ^
+__tests__/test.c:250:23: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+         timestamp(), addr, argv[1], backlog);
+                      ^
+__tests__/test.c:257:27: error: Cannot determine that 'sa' is initialized [bughuntingUninit]
+  if (sigaction(SIGCHLD, &sa, NULL) == -1) {
+                          ^
+__tests__/test.c:273:69: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+    inet_ntop(client_addr.sin_family, &client_addr.sin_addr.s_addr, addr,
+                                                                    ^
+__tests__/test.c:274:22: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+              sizeof(addr));
+                     ^
+__tests__/test.c:277:47: error: Cannot determine that 'client_addr' is initialized [bughuntingUninit]
+        accept(server_fd, (struct sockaddr *)&client_addr, &client_addr_size);
+                                              ^
+__tests__/test.c:277:61: error: Cannot determine that 'client_addr_size' is initialized [bughuntingUninit]
+        accept(server_fd, (struct sockaddr *)&client_addr, &client_addr_size);
+                                                            ^
+__tests__/test.c:280:27: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
+           client_fd - 3, addr, ntohs(client_addr.sin_port));
+                          ^
+__tests__/test.c:296:13: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+      bzero(buff, max_mssg_len);
+            ^
+__tests__/test.c:301:39: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+        bytes_rcvd = recv(client_fd, &buff, sizeof(buff), 0);
+                                      ^
+__tests__/test.c:310:21: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+        if (strncmp(buff, "!q", 2) == 0) {
+                    ^
+__tests__/test.c:318:72: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+        printf("[%s] CLIENT_%d@host:~$%s", timestamp(), client_fd - 3, buff);
+                                                                       ^
+__tests__/test.c:101:9: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+  bzero(buff, max_mssg_len);
+        ^
+__tests__/test.c:105:35: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+    bytes_rcvd = recv(client_fd, &buff, sizeof(buff), 0);
+                                  ^
+__tests__/test.c:115:17: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+    if (strncmp(buff, "!q", 2) == 0) {
+                ^
+__tests__/test.c:124:68: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+    printf("[%s] CLIENT_%d@host:~$%s", timestamp(), client_fd - 3, buff);
+                                                                   ^
+__tests__/test.c:125:11: error: Cannot determine that 'buff' is initialized [bughuntingUninit]
+    bzero(buff, max_mssg_len);
+          ^
+__tests__/test.c:267:34: error: Cannot determine that 'thread_args' is initialized [bughuntingUninit]
+  memset(&thread_args, 0, sizeof(thread_args));
+                                 ^
+__tests__/test.c:330:25: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
+    if (pthread_create(&t_id, NULL, service_clients, (void *)&thread_args) !=
+                        ^
+__tests__/test.c:330:63: error: Cannot determine that 'thread_args' is initialized [bughuntingUninit]
+    if (pthread_create(&t_id, NULL, service_clients, (void *)&thread_args) !=
+                                                              ^
+__tests__/test.c:333:14: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
+             t_id);
+             ^
+__tests__/test.c:340:25: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
+           timestamp(), t_id, client_fd - 3);
+                        ^
+__tests__/test.c:341:20: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
+    pthread_detach(t_id);
+                   ^
+__tests__/test.c:342:36: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
+    threads_pool[++thread_count] = t_id;
+                                   ^
+nofile:0:0: information: Cppcheck cannot find all the include files. Cppcheck can check the code without the include files found. But the results will probably be more accurate if all the include files are found. Please check your project's include directories and add all of them as include directories for Cppcheck. To see what files Cppcheck cannot find use --check-config. [missingInclude]
+
