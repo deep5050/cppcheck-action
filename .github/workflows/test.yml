@@ -1,31 +1,40 @@
-name: cppcheck-action-test
-on: [push]
+name: cppcheck-action-other_options-test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
-    name: cppcheck-test
+    name: cppcheck
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-          
+
+      # CppCheck analysis task
       - name: cppcheck
         uses: ./
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN}}
-          max_ctu_depth: 9
-          skip_preprocessor: disable
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           check_library: disable
-          inconclusive: enable
-          inline_suppression: disable
-          platform: disable
-          output_file: ./report.txt
-          force_language: c
+          skip_preprocessor: disable
+          enable: all #performance,portability,warning
           exclude_check: ./__tests__/exclude/
-        
+          inconclusive: disable
+          inline_suppression: disable
+          force_language: c
+          force: enable
+          max_ctu_depth: 12
+          platform: disable
+          #std: c11
+          output_file: ./CppCheckReport.txt
+          other_options: --bug-hunting --verbose --std=c11
+          
+      # Report generating task
       - name: publish report    
         uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: main
-
-
+          BRANCH_NAME: 'main' # your branch name goes here
