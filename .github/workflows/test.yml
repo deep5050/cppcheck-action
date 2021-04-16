@@ -2,9 +2,9 @@ name: cppcheck-action-other_options-test
 
 on:
   push:
-    branches: [ main ]
+    branches: [ checknow ]
   pull_request:
-    branches: [ main ]
+    branches: [ checknow ]
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
 
       # CppCheck analysis task
       - name: cppcheck
-        uses: BaderEddineOuaich/cppcheck-action@main
+        uses: ./
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           check_library: disable
@@ -37,4 +37,4 @@ jobs:
         uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: 'main' # your branch name goes here
+          BRANCH_NAME: 'checknow' # your branch name goes here
