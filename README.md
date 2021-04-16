@@ -88,6 +88,7 @@ jobs:
           platform:
           std:
           output_file:
+          other_options:
 
       - name: publish report    
         uses: mikeal/publish-to-github-action@master
@@ -112,6 +113,7 @@ jobs:
 | **platform** | `unix32`, `unix64`, `win32A`, `win32W`, `win64`, `avr8`, `elbrus-e1cp`, `pic8`, `pic8-enhanced`, `pic16`, `mips32`, `native`, `unspecified`, | Specifies platform specific types and sizes | `unspecified` |
 | **std** | `c89`, `c99`, `c11`, `c++11`, `c++14`, `c++17`, `c++20` | Set the C/C++ standard | `c11`, `c++20` |
 | **output_file** | `./path/to/output/file.txt` | Give a filename for the output report | `./cppcheck_report.txt` |
+| **other_options** | `--option1 --option2=value -opt3` | Any other options you want to add, separate with a space, wrong options will cause a failure. example: `--bug-hunting --verbose`| `disable` |
 
 
 <b> For further details check
