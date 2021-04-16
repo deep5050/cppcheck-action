@@ -82,6 +82,11 @@ inputs:
     default: ""
     required: false
 
+  other_options:
+    description: "Any other options you want to add, separate with a space, wrong options will cause a failure"
+    default: "disable"
+    required: false
+
   pull_request_branch:
     description: "Branch that the action will target on pull_request. Defaults to GITHUB_BASE_REF."
     default: ""
