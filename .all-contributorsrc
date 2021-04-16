@@ -1,0 +1,35 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "BaderEddineOuaich",
+      "name": "Bader",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/49657842?v=4",
+      "profile": "http://badereddineouaich.herokuapp.com",
+      "contributions": [
+        "test"
+      ]
+    },
+    {
+      "login": "sthagen",
+      "name": "Stefan Hagen",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/450800?v=4",
+      "profile": "https://stefan-hagen.website",
+      "contributions": [
+        "infra",
+        "test",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "cppcheck-action",
+  "projectOwner": "deep5050",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
