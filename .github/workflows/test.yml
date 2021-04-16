@@ -15,7 +15,7 @@ jobs:
 
       # CppCheck analysis task
       - name: cppcheck
-        uses: BaderEddineOuaich/cppcheck-action@main
+        uses: ./
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           check_library: disable
