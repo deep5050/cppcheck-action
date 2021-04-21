@@ -174,3 +174,6 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 [![deep5050/MastJokeMara - GitHub](https://gh-card.dev/repos/deep5050/MastJokeMara.svg)](https://github.com/deep5050/MastJokeMara)
 
 [![deep5050/memes-on-issues-action - GitHub](https://gh-card.dev/repos/deep5050/memes-on-issues-action.svg)](https://github.com/deep5050/memes-on-issues-action)
+
+
+### Thanks
