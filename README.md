@@ -176,4 +176,3 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 [![deep5050/memes-on-issues-action - GitHub](https://gh-card.dev/repos/deep5050/memes-on-issues-action.svg)](https://github.com/deep5050/memes-on-issues-action)
 
 
-### Thanks
