@@ -1,9 +1,5 @@
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![cppcheck-action](https://socialify.git.ci/deep5050/cppcheck-action/image?description=1&logo=https%3A%2F%2Fi.imgur.com%2FbDs8nfo.png&theme=Light)
-
 
 
 <div align=center>
@@ -175,4 +171,4 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 [![deep5050/memes-on-issues-action - GitHub](https://gh-card.dev/repos/deep5050/memes-on-issues-action.svg)](https://github.com/deep5050/memes-on-issues-action)
 
-
+[![deep5050/smart-radio - GitHub](https://gh-card.dev/repos/deep5050/smart-radio.svg)](https://github.com/deep5050/smart-radio)
