@@ -4,7 +4,8 @@
 
 <div align=center>
 <p align=center>
-<img align=center src=http://hits.dwyl.com/deep5050/cppcheck-action.svg alt=visits>
+<p><a href=https://www.youtube.com/channel/UCHE71XuJOPKlHSxSr40u5Lw> <img alt="YouTube Channel Views" src="https://img.shields.io/youtube/channel/views/UCHE71XuJOPKlHSxSr40u5Lw?style=social"></a>
+<a href=https://www.youtube.com/channel/UCHE71XuJOPKlHSxSr40u5Lw> <img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCHE71XuJOPKlHSxSr40u5Lw?style=social"></a></p>
 <img align=center src=https://img.shields.io/github/v/release/deep5050/cppcheck-action?style=flat-square alt=release>
 </p>
 
