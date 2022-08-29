@@ -30,7 +30,7 @@ jobs:
           platform: disable
           #std: c11
           output_file: ./CppCheckReport.txt
-          other_options: --bug-hunting --verbose --std=c11
+          other_options: --verbose --std=c11
           
       # Report generating task
       - name: publish report    
