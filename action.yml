@@ -1,5 +1,5 @@
 name: "cppcheck-action"
-author: deep5050
+author: chmorgan
 description: "Find potential vulnerabilities in your C/C++ codes"
 
 inputs:
