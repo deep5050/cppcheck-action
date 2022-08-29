@@ -1,22 +1,16 @@
 
-![cppcheck-action](https://socialify.git.ci/deep5050/cppcheck-action/image?description=1&logo=https%3A%2F%2Fi.imgur.com%2FbDs8nfo.png&theme=Light)
+![cppcheck-action](https://socialify.git.ci/chmorgan/cppcheck-action/image?description=1&logo=https%3A%2F%2Fi.imgur.com%2FbDs8nfo.png&theme=Light)
 
 
 <div align=center>
 <p align=center>
 <p><a href=https://www.youtube.com/channel/UCHE71XuJOPKlHSxSr40u5Lw> <img alt="YouTube Channel Views" src="https://img.shields.io/youtube/channel/views/UCHE71XuJOPKlHSxSr40u5Lw?style=social"></a>
 <a href=https://www.youtube.com/channel/UCHE71XuJOPKlHSxSr40u5Lw> <img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCHE71XuJOPKlHSxSr40u5Lw?style=social"></a></p>
-<img align=center src=https://img.shields.io/github/v/release/deep5050/cppcheck-action?style=flat-square alt=release>
+<img align=center 
+src=https://img.shields.io/github/v/release/chmorgan/cppcheck-action?style=flat-square alt=release>
 </p>
 
 </div>
-
-
-## [subscribe to service updates](https://github.com/deep5050/cppcheck-action/issues/11)
-
-> ** Please participate on this
-> [poll](https://github.com/deep5050/cppcheck-action/issues/10) for a feature
-> planned by me **
 
 
 ## What is cppcheck?
@@ -45,7 +39,7 @@ jobs:
       - uses: actions/checkout@v2
           
       - name: cppcheck
-        uses: deep5050/cppcheck-action@main
+        uses: chmorgan/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
           
@@ -70,7 +64,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: cppcheck
-        uses: deep5050/cppcheck-action@main
+        uses: chmorgan/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
           check_library:
@@ -164,12 +158,3 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
-### Related
-[![deep5050/count-comments-action - GitHub](https://gh-card.dev/repos/deep5050/count-comments-action.svg)](https://github.com/deep5050/count-comments-action)
-
-[![deep5050/MastJokeMara - GitHub](https://gh-card.dev/repos/deep5050/MastJokeMara.svg)](https://github.com/deep5050/MastJokeMara)
-
-[![deep5050/memes-on-issues-action - GitHub](https://gh-card.dev/repos/deep5050/memes-on-issues-action.svg)](https://github.com/deep5050/memes-on-issues-action)
-
-[![deep5050/smart-radio - GitHub](https://gh-card.dev/repos/deep5050/smart-radio.svg)](https://github.com/deep5050/smart-radio)
