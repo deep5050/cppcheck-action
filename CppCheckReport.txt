@@ -1,884 +1,167 @@
-__tests__/client/client.c:58:11: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-    memset(name, '\0', MAX_USERNAME_LEN);
-          ^
-__tests__/client/client.c:61:12: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-    strncpy(name, p_args->name, strlen(p_args->name) + 1);
-           ^
-__tests__/client/client.c:65:15: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-        memset(rcvd_msg, '\0', MAX_MSG_LEN);
-              ^
-__tests__/client/client.c:96:11: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-    memset(&server_addr, 0, sizeof(server_addr));
-          ^
-__tests__/client/client.c:97:11: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-    memset(server_ip, '\0', sizeof(server_ip));
-          ^
-__tests__/client/client.c:99:11: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-    memset(name, '\0', sizeof(name));
-          ^
-__tests__/client/client.c:100:11: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-    memset(buff, '\0', sizeof(buff));
-          ^
-__tests__/client/client.c:102:32: error: Cannot determine that 'argv[0]' is initialized (you can use 'const' to say data must be initialized) [bughuntingUninitNonConstArg]
-    while ((opt = getopt(argc, argv, "-a:p:D:n:")) != -1)
-                               ^
-__tests__/client/client.c:162:15: error: Buffer read/write, when calling 'strcpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-        strcpy(server_ip, "0.0.0.0");
-              ^
-__tests__/client/client.c:233:12: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-    strncpy(thread_args.name, name, strlen(name));
-           ^
-__tests__/client/client.c:223:31: error: Cannot determine that 'greetings_from_server[0]' is initialized [bughuntingUninit]
-        LOG(_LOG_INFO_, "%s", greetings_from_server);
-                              ^
-__tests__/server/server.c:32:54: error: Array index out of bounds, cannot determine that i is less than 20 [bughuntingArrayIndexOutOfBounds]
-        int return_val = pthread_cancel(threads_pool[i]);
-                                                     ^
-__tests__/server/server.c:32:54: error: Array index out of bounds, cannot determine that i is not negative [bughuntingArrayIndexNegative]
-        int return_val = pthread_cancel(threads_pool[i]);
-                                                     ^
-__tests__/server/server.c:32:54: error: Array index out of bounds, cannot determine that i is less than 20 [bughuntingArrayIndexOutOfBounds]
-        int return_val = pthread_cancel(threads_pool[i]);
-                                                     ^
-__tests__/server/server.c:45:21: note: Calling kill_all_threads
-    kill_all_threads();
-                    ^
-__tests__/server/server.c:32:54: note: Array index out of bounds, cannot determine that i is less than 20
-        int return_val = pthread_cancel(threads_pool[i]);
-                                                     ^
-__tests__/server/server.c:32:54: error: Array index out of bounds, cannot determine that i is not negative [bughuntingArrayIndexNegative]
-        int return_val = pthread_cancel(threads_pool[i]);
-                                                     ^
-__tests__/server/server.c:45:21: note: Calling kill_all_threads
-    kill_all_threads();
-                    ^
-__tests__/server/server.c:32:54: note: Array index out of bounds, cannot determine that i is not negative
-        int return_val = pthread_cancel(threads_pool[i]);
-                                                     ^
-__tests__/server/server.c:62:32: error: Cannot determine that 'argv[0]' is initialized (you can use 'const' to say data must be initialized) [bughuntingUninitNonConstArg]
-    while ((opt = getopt(argc, argv, "-p:b:D:")) != -1)
-                               ^
-__tests__/server/server.c:126:11: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-    memset(&thread_args, 0, sizeof(thread_args));
-          ^
-__tests__/server/server.c:132:11: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-    memset(&server_addr, 0, sizeof(server_addr));
-          ^
-__tests__/server/server.c:133:11: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-    memset(&client_addr, 0, sizeof(client_addr));
-          ^
-__tests__/server/server.c:148:14: error: Cannot determine that 'results' is initialized [bughuntingUninit]
-    for (p = results; p != NULL; p = p->ai_next)
-             ^
-__tests__/server/server.c:148:12: error: Cannot determine that 'p=results' is initialized [bughuntingUninit]
-    for (p = results; p != NULL; p = p->ai_next)
-           ^
-__tests__/server/server.c:148:23: error: Cannot determine that 'p' is initialized [bughuntingUninit]
-    for (p = results; p != NULL; p = p->ai_next)
-                      ^
-__tests__/server/server.c:84:19: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-            memset(temp, '\0', sizeof(temp));
-                  ^
-__tests__/server/server.c:85:20: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-            strncpy(temp, optarg, 4);
-                   ^
-__tests__/server/server.c:174:45: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
-        inet_ntop(p->ai_family, p->ai_addr, addr, sizeof(addr));
-                                            ^
-__tests__/server/server.c:178:18: error: Cannot determine that 'results' is initialized [bughuntingUninit]
-    freeaddrinfo(results);
-                 ^
-__tests__/server/server.c:191:39: error: Cannot determine that 'backlog' is initialized [bughuntingUninit]
-    listen_status = listen(server_fd, backlog);
-                                      ^
-__tests__/server/server.c:199:66: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
-    LOG(_LOG_INFO_, "UP and LISTENING on %s:%s with BACKLOG %d", addr, port, backlog);
-                                                                 ^
-__tests__/server/server.c:199:72: error: Cannot determine that 'port' is initialized [bughuntingUninit]
-    LOG(_LOG_INFO_, "UP and LISTENING on %s:%s with BACKLOG %d", addr, port, backlog);
-                                                                       ^
-__tests__/server/server.c:199:78: error: Cannot determine that 'backlog' is initialized [bughuntingUninit]
-    LOG(_LOG_INFO_, "UP and LISTENING on %s:%s with BACKLOG %d", addr, port, backlog);
-                                                                             ^
-__tests__/server/server.c:210:73: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
-        inet_ntop(client_addr.sin_family, &client_addr.sin_addr.s_addr, addr, sizeof(addr));
-                                                                        ^
-__tests__/server/server.c:212:59: error: Cannot determine that 'client_addr' is initialized [bughuntingUninit]
-        client_fd = accept(server_fd, (struct sockaddr *)&client_addr, &client_addr_size);
-                                                          ^
-__tests__/server/server.c:220:65: error: Cannot determine that 'addr' is initialized [bughuntingUninit]
-        LOG(_LOG_INFO_, "NEW CLIENT: ID(%d): %s:%d", client_fd, addr, ntohs(client_addr.sin_port));
-                                                                ^
-__tests__/server/server.c:228:29: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
-        if (pthread_create(&t_id, NULL, service_clients, (void *)&thread_args) != 0)
-                            ^
-__tests__/server/server.c:228:67: error: Cannot determine that 'thread_args' is initialized [bughuntingUninit]
-        if (pthread_create(&t_id, NULL, service_clients, (void *)&thread_args) != 0)
-                                                                  ^
-__tests__/server/server.c:230:64: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
-            LOG(_LOG_ERR_, "couldn't create the Thread %ld\n", t_id);
-                                                               ^
-__tests__/server/server.c:236:76: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
-        LOG(_LOG_INFO_, "New thread created: %ld to service client ID %d", t_id, client_fd);
-                                                                           ^
-__tests__/server/server.c:237:24: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
-        pthread_detach(t_id);
-                       ^
-__tests__/server/server.c:238:40: error: Cannot determine that 't_id' is initialized [bughuntingUninit]
-        threads_pool[++thread_count] = t_id;
-                                       ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:136:45: note: Calling timestamp
-  printf("\n[%s] SERVER CLOSED\n", timestamp());
-                                            ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:136:45: note: Calling timestamp
-  printf("\n[%s] SERVER CLOSED\n", timestamp());
-                                            ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:136:45: note: Calling timestamp
-  printf("\n[%s] SERVER CLOSED\n", timestamp());
-                                            ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:136:45: note: Calling timestamp
-  printf("\n[%s] SERVER CLOSED\n", timestamp());
-                                            ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:148:11: error: Cannot determine that 'argv[1]' is initialized (you can use 'const' to say data must be initialized) [bughuntingUninitNonConstArg]
-  if (argv[1] == "" || argv[1] == NULL) {
-          ^
-__tests__/test.c:153:11: error: Cannot determine that 'argv[2]' is initialized (you can use 'const' to say data must be initialized) [bughuntingUninitNonConstArg]
-  if (argv[2] == "" || argv[2] == NULL) {
-          ^
-__tests__/test.c:158:24: error: Cannot determine that 'argv[2]' is initialized (you can use 'const' to say data must be initialized) [bughuntingUninitNonConstArg]
-  backlog = strtol(argv[2], &strptr, 10);
-                       ^
-__tests__/test.c:172:9: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-  memset(&server_addr, 0, sizeof(server_addr));
+__tests__/client/client.c:56:9: style: The scope of the variable 'rcvd_bytes' can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for 'i' can be reduced:
+void f(int x)
+{
+    int i = 0;
+    if (x) {
+        // it's safe to move 'int i = 0;' here
+        for (int n = 0; n < 10; ++n) {
+            // it is possible but not safe to move 'int i = 0;' here
+            do_something(&i);
+        }
+    }
+}
+When you see this message it is always safe to reduce the variable scope 1 level. [variableScope]
+    int rcvd_bytes;
         ^
-__tests__/test.c:173:9: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-  memset(&client_addr, 0, sizeof(client_addr));
-        ^
-__tests__/test.c:194:44: error: Cannot determine that 'argv[1]' is initialized (you can use 'const' to say data must be initialized) [bughuntingUninitNonConstArg]
-  if ((addr_status = getaddrinfo(NULL, argv[1], &server_addr, &results)) != 0) {
+__tests__/client/client.c:86:92: style: The scope of the variable 'n' can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for 'i' can be reduced:
+void f(int x)
+{
+    int i = 0;
+    if (x) {
+        // it's safe to move 'int i = 0;' here
+        for (int n = 0; n < 10; ++n) {
+            // it is possible but not safe to move 'int i = 0;' here
+            do_something(&i);
+        }
+    }
+}
+When you see this message it is always safe to reduce the variable scope 1 level. [variableScope]
+    int opt, port, debug_level, connect_status, sent_bytes, recv_bytes, temp_return_value, n;
+                                                                                           ^
+__tests__/fibonacci.c:21:21: style: The scope of the variable 'first' can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for 'i' can be reduced:
+void f(int x)
+{
+    int i = 0;
+    if (x) {
+        // it's safe to move 'int i = 0;' here
+        for (int n = 0; n < 10; ++n) {
+            // it is possible but not safe to move 'int i = 0;' here
+            do_something(&i);
+        }
+    }
+}
+When you see this message it is always safe to reduce the variable scope 1 level. [variableScope]
+    static long int first = 0, second = 1, sum;
+                    ^
+__tests__/fibonacci.c:21:32: style: The scope of the variable 'second' can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for 'i' can be reduced:
+void f(int x)
+{
+    int i = 0;
+    if (x) {
+        // it's safe to move 'int i = 0;' here
+        for (int n = 0; n < 10; ++n) {
+            // it is possible but not safe to move 'int i = 0;' here
+            do_something(&i);
+        }
+    }
+}
+When you see this message it is always safe to reduce the variable scope 1 level. [variableScope]
+    static long int first = 0, second = 1, sum;
+                               ^
+__tests__/fibonacci.c:21:44: style: The scope of the variable 'sum' can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for 'i' can be reduced:
+void f(int x)
+{
+    int i = 0;
+    if (x) {
+        // it's safe to move 'int i = 0;' here
+        for (int n = 0; n < 10; ++n) {
+            // it is possible but not safe to move 'int i = 0;' here
+            do_something(&i);
+        }
+    }
+}
+When you see this message it is always safe to reduce the variable scope 1 level. [variableScope]
+    static long int first = 0, second = 1, sum;
                                            ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:195:63: note: Calling timestamp
-    printf("[%s] SERVER: ERROR getaddrinfo(): %s\n", timestamp(),
-                                                              ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:195:63: note: Calling timestamp
-    printf("[%s] SERVER: ERROR getaddrinfo(): %s\n", timestamp(),
-                                                              ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:195:63: note: Calling timestamp
-    printf("[%s] SERVER: ERROR getaddrinfo(): %s\n", timestamp(),
-                                                              ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:195:63: note: Calling timestamp
-    printf("[%s] SERVER: ERROR getaddrinfo(): %s\n", timestamp(),
-                                                              ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:201:12: error: Cannot determine that 'results' is initialized [bughuntingUninit]
-  for (p = results; p != NULL; p = p->ai_next) {
-           ^
-__tests__/test.c:201:10: error: Cannot determine that 'p=results' is initialized [bughuntingUninit]
-  for (p = results; p != NULL; p = p->ai_next) {
-         ^
-__tests__/test.c:201:21: error: Cannot determine that 'p' is initialized [bughuntingUninit]
-  for (p = results; p != NULL; p = p->ai_next) {
-                    ^
-__tests__/test.c:203:41: error: Cannot determine that 'addr[0]' is initialized [bughuntingUninit]
-    inet_ntop(p->ai_family, p->ai_addr, addr, sizeof(addr));
-                                        ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:204:60: note: Calling timestamp
-    printf("[%s] SERVER: Trying to build on: %s", timestamp(), addr);
-                                                           ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:204:60: note: Calling timestamp
-    printf("[%s] SERVER: Trying to build on: %s", timestamp(), addr);
-                                                           ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:204:60: note: Calling timestamp
-    printf("[%s] SERVER: Trying to build on: %s", timestamp(), addr);
-                                                           ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:204:60: note: Calling timestamp
-    printf("[%s] SERVER: Trying to build on: %s", timestamp(), addr);
-                                                           ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:231:16: error: Cannot determine that 'results' is initialized [bughuntingUninit]
-  freeaddrinfo(results);
+__tests__/fibonacci.c:9:16: style: Variable 'i' is assigned a value that is never used. [unreadVariable]
+    long int i = 0, j = 1;
                ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:250:19: note: Calling timestamp
-         timestamp(), addr, argv[1], backlog);
-                  ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:250:19: note: Calling timestamp
-         timestamp(), addr, argv[1], backlog);
-                  ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:250:19: note: Calling timestamp
-         timestamp(), addr, argv[1], backlog);
-                  ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:250:19: note: Calling timestamp
-         timestamp(), addr, argv[1], backlog);
-                  ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:250:33: error: Cannot determine that 'argv[1]' is initialized (you can use 'const' to say data must be initialized) [bughuntingUninitNonConstArg]
-         timestamp(), addr, argv[1], backlog);
-                                ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:279:64: note: Calling timestamp
-    printf("[%s] SERVER: NEW CLIENT ID(%d): %s:%d\n", timestamp(),
-                                                               ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:279:64: note: Calling timestamp
-    printf("[%s] SERVER: NEW CLIENT ID(%d): %s:%d\n", timestamp(),
-                                                               ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:279:64: note: Calling timestamp
-    printf("[%s] SERVER: NEW CLIENT ID(%d): %s:%d\n", timestamp(),
-                                                               ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:279:64: note: Calling timestamp
-    printf("[%s] SERVER: NEW CLIENT ID(%d): %s:%d\n", timestamp(),
-                                                               ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:287:75: note: Calling timestamp
-        printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                          ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:287:75: note: Calling timestamp
-        printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                          ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:287:75: note: Calling timestamp
-        printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                          ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:287:75: note: Calling timestamp
-        printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                          ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:296:13: error: Cannot determine that 'buff[0]' is initialized [bughuntingUninit]
-      bzero(buff, max_mssg_len);
-            ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:303:77: note: Calling timestamp
-          printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                            ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:303:77: note: Calling timestamp
-          printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                            ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:303:77: note: Calling timestamp
-          printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                            ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:303:77: note: Calling timestamp
-          printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                            ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:312:70: note: Calling timestamp
-          printf("[%s] SERVER: DISCONNECTED: CLIENT(%d)\n", timestamp(),
-                                                                     ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:312:70: note: Calling timestamp
-          printf("[%s] SERVER: DISCONNECTED: CLIENT(%d)\n", timestamp(),
-                                                                     ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:312:70: note: Calling timestamp
-          printf("[%s] SERVER: DISCONNECTED: CLIENT(%d)\n", timestamp(),
-                                                                     ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:312:70: note: Calling timestamp
-          printf("[%s] SERVER: DISCONNECTED: CLIENT(%d)\n", timestamp(),
-                                                                     ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:318:53: note: Calling timestamp
-        printf("[%s] CLIENT_%d@host:~$%s", timestamp(), client_fd - 3, buff);
-                                                    ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:318:53: note: Calling timestamp
-        printf("[%s] CLIENT_%d@host:~$%s", timestamp(), client_fd - 3, buff);
-                                                    ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:318:53: note: Calling timestamp
-        printf("[%s] CLIENT_%d@host:~$%s", timestamp(), client_fd - 3, buff);
-                                                    ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:318:53: note: Calling timestamp
-        printf("[%s] CLIENT_%d@host:~$%s", timestamp(), client_fd - 3, buff);
-                                                    ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:62:50: error: Array index out of bounds, cannot determine that i is less than 20 [bughuntingArrayIndexOutOfBounds]
-    int return_val = pthread_cancel(threads_pool[i]);
-                                                 ^
-__tests__/test.c:62:50: error: Array index out of bounds, cannot determine that i is not negative [bughuntingArrayIndexNegative]
-    int return_val = pthread_cancel(threads_pool[i]);
-                                                 ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:67:78: note: Calling timestamp
-    printf("\n[%s] SERVER: %d threads did not shutdown properly\n", timestamp(),
-                                                                             ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:67:78: note: Calling timestamp
-    printf("\n[%s] SERVER: %d threads did not shutdown properly\n", timestamp(),
-                                                                             ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:67:78: note: Calling timestamp
-    printf("\n[%s] SERVER: %d threads did not shutdown properly\n", timestamp(),
-                                                                             ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:67:78: note: Calling timestamp
-    printf("\n[%s] SERVER: %d threads did not shutdown properly\n", timestamp(),
-                                                                             ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:70:65: note: Calling timestamp
-    printf("\n[%s] All threads exited successfully\n", timestamp());
-                                                                ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:70:65: note: Calling timestamp
-    printf("\n[%s] All threads exited successfully\n", timestamp());
-                                                                ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:70:65: note: Calling timestamp
-    printf("\n[%s] All threads exited successfully\n", timestamp());
-                                                                ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:70:65: note: Calling timestamp
-    printf("\n[%s] All threads exited successfully\n", timestamp());
-                                                                ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:85:55: note: Calling timestamp
-  printf("[%s] SERVER: Inside Thread %ld\n", timestamp(), pthread_self());
-                                                      ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:85:55: note: Calling timestamp
-  printf("[%s] SERVER: Inside Thread %ld\n", timestamp(), pthread_self());
-                                                      ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:85:55: note: Calling timestamp
-  printf("[%s] SERVER: Inside Thread %ld\n", timestamp(), pthread_self());
-                                                      ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:85:55: note: Calling timestamp
-  printf("[%s] SERVER: Inside Thread %ld\n", timestamp(), pthread_self());
-                                                      ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:93:71: note: Calling timestamp
-    printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                      ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:93:71: note: Calling timestamp
-    printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                      ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:93:71: note: Calling timestamp
-    printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                      ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:93:71: note: Calling timestamp
-    printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                      ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:101:9: error: Cannot determine that 'buff[0]' is initialized [bughuntingUninit]
-  bzero(buff, max_mssg_len);
+__tests__/fibonacci.c:9:23: style: Variable 'j' is assigned a value that is never used. [unreadVariable]
+    long int i = 0, j = 1;
+                      ^
+__tests__/fibonacci.c:8:9: style: Unused variable: k [unusedVariable]
+    int k, n;
         ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:107:73: note: Calling timestamp
-      printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                        ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:107:73: note: Calling timestamp
-      printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                        ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:107:73: note: Calling timestamp
-      printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                        ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:107:73: note: Calling timestamp
-      printf("[%s] SERVER: Connection lost with client(%d)\n", timestamp(),
-                                                                        ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:117:58: note: Calling timestamp
-      printf("[%s] DISCONNECTED: CLIENT(%d)\n", timestamp(), client_fd - 3);
-                                                         ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:117:58: note: Calling timestamp
-      printf("[%s] DISCONNECTED: CLIENT(%d)\n", timestamp(), client_fd - 3);
-                                                         ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:117:58: note: Calling timestamp
-      printf("[%s] DISCONNECTED: CLIENT(%d)\n", timestamp(), client_fd - 3);
-                                                         ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:117:58: note: Calling timestamp
-      printf("[%s] DISCONNECTED: CLIENT(%d)\n", timestamp(), client_fd - 3);
-                                                         ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:118:65: note: Calling timestamp
-      printf("[%s] SERVER: Exiting from Thread %ld\n", timestamp(),
-                                                                ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:118:65: note: Calling timestamp
-      printf("[%s] SERVER: Exiting from Thread %ld\n", timestamp(),
-                                                                ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:118:65: note: Calling timestamp
-      printf("[%s] SERVER: Exiting from Thread %ld\n", timestamp(),
-                                                                ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:118:65: note: Calling timestamp
-      printf("[%s] SERVER: Exiting from Thread %ld\n", timestamp(),
-                                                                ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:124:49: note: Calling timestamp
-    printf("[%s] CLIENT_%d@host:~$%s", timestamp(), client_fd - 3, buff);
-                                                ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:124:49: note: Calling timestamp
-    printf("[%s] CLIENT_%d@host:~$%s", timestamp(), client_fd - 3, buff);
-                                                ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:124:49: note: Calling timestamp
-    printf("[%s] CLIENT_%d@host:~$%s", timestamp(), client_fd - 3, buff);
-                                                ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:124:49: note: Calling timestamp
-    printf("[%s] CLIENT_%d@host:~$%s", timestamp(), client_fd - 3, buff);
-                                                ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:267:9: error: Buffer read/write, when calling 'memset' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-  memset(&thread_args, 0, sizeof(thread_args));
+__tests__/server/server.c:115:9: style: The scope of the variable 'client_fd' can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for 'i' can be reduced:
+void f(int x)
+{
+    int i = 0;
+    if (x) {
+        // it's safe to move 'int i = 0;' here
+        for (int n = 0; n < 10; ++n) {
+            // it is possible but not safe to move 'int i = 0;' here
+            do_something(&i);
+        }
+    }
+}
+When you see this message it is always safe to reduce the variable scope 1 level. [variableScope]
+    int client_fd, server_status, bind_status, listen_status, accept_status,
         ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  str = asctime(local);
-                ^
-__tests__/test.c:332:74: note: Calling timestamp
-      printf("[%s] SERVER: ERROR in creating the Thread %ld\n", timestamp(),
-                                                                         ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
+__tests__/server/server.c:115:35: style: The scope of the variable 'bind_status' can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for 'i' can be reduced:
+void f(int x)
+{
+    int i = 0;
+    if (x) {
+        // it's safe to move 'int i = 0;' here
+        for (int n = 0; n < 10; ++n) {
+            // it is possible but not safe to move 'int i = 0;' here
+            do_something(&i);
+        }
+    }
+}
+When you see this message it is always safe to reduce the variable scope 1 level. [variableScope]
+    int client_fd, server_status, bind_status, listen_status, accept_status,
+                                  ^
+__tests__/server/server.c:115:20: style: Unused variable: server_status [unusedVariable]
+    int client_fd, server_status, bind_status, listen_status, accept_status,
                    ^
-__tests__/test.c:332:74: note: Calling timestamp
-      printf("[%s] SERVER: ERROR in creating the Thread %ld\n", timestamp(),
-                                                                         ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:332:74: note: Calling timestamp
-      printf("[%s] SERVER: ERROR in creating the Thread %ld\n", timestamp(),
-                                                                         ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:332:74: note: Calling timestamp
-      printf("[%s] SERVER: ERROR in creating the Thread %ld\n", timestamp(),
-                                                                         ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:26:17: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
+__tests__/server/server.c:115:63: style: Unused variable: accept_status [unusedVariable]
+    int client_fd, server_status, bind_status, listen_status, accept_status,
+                                                              ^
+__tests__/server/server.c:116:22: style: Variable 'n' is assigned a value that is never used. [unreadVariable]
+        addr_status, n = 0, yes = 1, bytes_sent;
+                     ^
+__tests__/server/server.c:116:38: style: Unused variable: bytes_sent [unusedVariable]
+        addr_status, n = 0, yes = 1, bytes_sent;
+                                     ^
+__tests__/server/server.c:130:10: style: Unused variable: buff [unusedVariable]
+    char buff[MAX_MSG_LEN], addr[INET_ADDRSTRLEN];
+         ^
+__tests__/test.c:26:9: style: Obsolete function 'asctime' called. It is recommended to use 'strftime' instead. [asctimeCalled]
   str = asctime(local);
-                ^
-__tests__/test.c:340:21: note: Calling timestamp
-           timestamp(), t_id, client_fd - 3);
+        ^
+__tests__/test.c:243:6: style: Suspicious condition (assignment + comparison); Clarify expression with parentheses. [clarifyCondition]
+  if (listen_status = listen(server_fd, backlog) == -1) {
+     ^
+__tests__/test.c:148:15: warning: String literal compared with variable 'argv[1]'. Did you intend to use strcmp() instead? [literalWithCharPtrCompare]
+  if (argv[1] == "" || argv[1] == NULL) {
+              ^
+__tests__/test.c:153:15: warning: String literal compared with variable 'argv[2]'. Did you intend to use strcmp() instead? [literalWithCharPtrCompare]
+  if (argv[2] == "" || argv[2] == NULL) {
+              ^
+__tests__/test.c:243:21: style: Variable 'listen_status' is assigned a value that is never used. [unreadVariable]
+  if (listen_status = listen(server_fd, backlog) == -1) {
                     ^
-__tests__/test.c:26:17: note: There is function call, cannot determine that 1st argument is initialized.
-  str = asctime(local);
-                ^
-__tests__/test.c:29:20: error: There is function call, cannot determine that 1st argument is initialized. [bughuntingUninitArg]
-  int len = strlen(str) + 1;
+__tests__/test.c:262:20: style: Variable 'greetings' is assigned a value that is never used. [unreadVariable]
+  char greetings[] = "SERVER: Hi client, you are now connected\n";
                    ^
-__tests__/test.c:340:21: note: Calling timestamp
-           timestamp(), t_id, client_fd - 3);
-                    ^
-__tests__/test.c:29:20: note: There is function call, cannot determine that 1st argument is initialized.
-  int len = strlen(str) + 1;
-                   ^
-__tests__/test.c:34:41: error: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0 [bughuntingInvalidArgValue]
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:340:21: note: Calling timestamp
-           timestamp(), t_id, client_fd - 3);
-                    ^
-__tests__/test.c:34:41: note: There is function call, cannot determine that 3rd argument value is valid. Bad value: less than 0
-      strncpy(&str[i], &str[i + 1], len - i);
-                                        ^
-__tests__/test.c:34:14: error: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed [bughuntingBufferOverflow]
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:340:21: note: Calling timestamp
-           timestamp(), t_id, client_fd - 3);
-                    ^
-__tests__/test.c:34:14: note: Buffer read/write, when calling 'strncpy' it cannot be determined that 1st argument is not overflowed
-      strncpy(&str[i], &str[i + 1], len - i);
-             ^
-__tests__/test.c:342:18: error: Array index out of bounds, cannot determine that ++thread_count is less than 20 [bughuntingArrayIndexOutOfBounds]
-    threads_pool[++thread_count] = t_id;
+__tests__/test.c:281:18: style: Variable 'sorry' is assigned a value that is never used. [unreadVariable]
+    char sorry[] = "SERVER: sorry could not give the service right now\n";
                  ^
-__tests__/test.c:342:18: error: Array index out of bounds, cannot determine that ++thread_count is not negative [bughuntingArrayIndexNegative]
-    threads_pool[++thread_count] = t_id;
+__tests__/test.c:164:18: style: Unused variable: server_status [unusedVariable]
+  int client_fd, server_status, bind_status, listen_status, accept_status,
                  ^
+__tests__/test.c:164:61: style: Unused variable: accept_status [unusedVariable]
+  int client_fd, server_status, bind_status, listen_status, accept_status,
+                                                            ^
+__tests__/test.c:166:8: style: Unused variable: buff [unusedVariable]
+  char buff[max_mssg_len];
+       ^
+__tests__/test.c:167:7: style: Variable 'n' is assigned a value that is never used. [unreadVariable]
+  int n = 0, yes = 1;
+      ^
+__tests__/test.c:169:7: style: Unused variable: bytes_sent [unusedVariable]
+  int bytes_sent;
+      ^
 nofile:0:0: information: Cppcheck cannot find all the include files. Cppcheck can check the code without the include files found. But the results will probably be more accurate if all the include files are found. Please check your project's include directories and add all of them as include directories for Cppcheck. To see what files Cppcheck cannot find use --check-config. [missingInclude]
 
