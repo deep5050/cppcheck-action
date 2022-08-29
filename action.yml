@@ -1,4 +1,4 @@
-name: "cppcheck-action"
+name: "cppcheck-action-jackson"
 author: chmorgan
 description: "Find potential vulnerabilities in your C/C++ codes"
 
