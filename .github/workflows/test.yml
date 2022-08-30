@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       # CppCheck analysis task
+      # Task is expected to fail as code in __tests__ has a number of intentional issues
       - name: cppcheck
         uses: ./
         with:
