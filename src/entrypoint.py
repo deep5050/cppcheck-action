@@ -90,7 +90,7 @@ DSL = {
     INLINE_SUPPRESSION: os.getenv(INLINE_SUPPRESSION, DISABLED),
     ENFORCE_LANGUAGE: os.getenv(ENFORCE_LANGUAGE, DISABLED),
     MAX_CTU_DEPTH: os.getenv(MAX_CTU_DEPTH, DISABLED),
-    OUTPUT_FILE: os.getenv(OUTPUT_FILE, "cppcheck_report.txt"),
+    OUTPUT_FILE: os.getenv(OUTPUT_FILE, None),
     PLATFORM_TYPE: os.getenv(PLATFORM_TYPE, DISABLED),
     STD: os.getenv(STD, DISABLED),
     OTHER_OPTIONS: os.getenv(OTHER_OPTIONS, DISABLED),
@@ -158,7 +158,7 @@ def parse_checks(dsl):
 
 
 def command(dsl=None, actions=None, checks_sep=CHECKS_SEP, constant_dimensions=CONSTANT_DIMENSIONS):
-    """Prepare the command vector and set the path to the report file"""
+    """Prepare the command vector and set the path to the report file, if set"""
     dsl = DSL if dsl is None else dsl
     actions = ACTIONS if actions is None else actions
 
@@ -204,7 +204,9 @@ def run(vector, where=SOURCE_ROOT, show_version=False, show_help=False):
         for line in completed.stdout.decode(ENCODING, errors="ignore").split("\n"):
             print(" ", line)
 
-    vector.append(f"--output-file={DSL[OUTPUT_FILE]}")
+    if DSL[OUTPUT_FILE] is not None:
+      vector.append(f"--output-file={DSL[OUTPUT_FILE]}")
+
     vector.append(f"{where}")
     print("executing static code analysis")
     print(f"  effective command: {' '.join(vector)}")
