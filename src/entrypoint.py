@@ -242,7 +242,7 @@ def run(vector, where=SOURCE_ROOT, show_version=False, show_help=False):
 
 def main():
     """Drive the parameter extraction and execution of cppcheck."""
-    if all((GITHUB_EVENT_NAME == "pull_request", GITHUB_ACTOR != GITHUB_REPOSITORY_OWNER)):
+    if all((GITHUB_ACTOR != GITHUB_REPOSITORY_OWNER)):
         return 2
 
     return run(command(), SOURCE_ROOT, DISPLAY_SCA_VERSION, DISPLAY_SCA_HELP)
