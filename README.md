@@ -45,14 +45,7 @@ jobs:
       - name: cppcheck
         uses: chmorgan/cppcheck-action-jackson@main
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN}}
-          
-        
-      - name: publish report    
-        uses: mikeal/publish-to-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: 'main' # your branch name goes here
+          github_token: ${{ secrets.GITHUB_TOKEN}}        
 ```
 
 ### Advanced configuration
@@ -84,12 +77,6 @@ jobs:
           std:
           output_file:
           other_options:
-
-      - name: publish report    
-        uses: mikeal/publish-to-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: 'main' # your branch name goes here
 ```
 
 ### Input options

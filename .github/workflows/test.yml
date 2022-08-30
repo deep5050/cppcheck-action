@@ -29,12 +29,6 @@ jobs:
           max_ctu_depth: 12
           platform: disable
           #std: c11
-          output_file: ./CppCheckReport.txt
+          #output_file: ./CppCheckReport.txt
           other_options: --verbose --std=c11
-          
-      # Report generating task
-      - name: publish report    
-        uses: mikeal/publish-to-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: 'main' # your branch name goes here
+
