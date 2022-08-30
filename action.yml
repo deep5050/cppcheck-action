@@ -7,16 +7,6 @@ inputs:
     description: "GITHUB_TOKEN secret < automatically provided by Github , you don't need to set up >"
     required: true
     
-  # github_username:
-  #   description: GitHub account name
-  #   default: "cppcheck-action"
-  # github_email:
-  #   description: GitHub account email
-  #   default: "cppcheck-action@master"
-  # commit_msg:
-  #   description: custom commit message
-  #   default: "cppcheck report added or updated"
-
   check_library:
     description: "Show information messages when library files have info."
     default: "disable"
