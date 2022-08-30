@@ -25,6 +25,10 @@ C/C++ code even if it has non-standard syntax (common in embedded projects).
 
 Create `cppcheck.yml` under `.github/workflows` With the following contents
 
+## What version of cppcheck is being used?
+
+cppcheck v2.9 is the present vesion
+
 ### Default configuration
 
 ```yml
@@ -39,7 +43,7 @@ jobs:
       - uses: actions/checkout@v2
           
       - name: cppcheck
-        uses: chmorgan/cppcheck-action@main
+        uses: chmorgan/cppcheck-action-jackson@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
           
@@ -64,7 +68,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: cppcheck
-        uses: chmorgan/cppcheck-action@main
+        uses: chmorgan/cppcheck-action-jackson@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
           check_library:
@@ -115,6 +119,7 @@ jobs:
 > MIT License
 
 > Copyright (c) 2021 Dipankar Pal
+> Copyright (c) 2022 Chris Morgan
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
