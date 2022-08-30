@@ -2,9 +2,7 @@ name: cppcheck-action-other_options-test
 
 on:
   push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
 
 jobs:
   build:
