@@ -64,7 +64,7 @@ inputs:
 
   output_file:
     description: "file where the result to be dumped"
-    default: "cppcheck_report.txt"
+    default: ""
     required: false
 
   target_branch:
