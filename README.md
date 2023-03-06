@@ -94,6 +94,52 @@ jobs:
           BRANCH_NAME: 'main' # your branch name goes here
 ```
 
+### Pass/fail configuration
+
+Instead of uploading the results to your repo, you can also parse them during the run and then show the action as passing or failing.
+
+```yml
+name: cppcheck
+on: [push]
+
+jobs:
+  build:
+    name: cppcheck-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+          
+      - name: cppcheck
+        uses: deep5050/cppcheck-action@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN}}
+          output_file: cppcheck_report.txt
+          
+      - name: print output
+        run: |
+             REPORTFILE=./cppcheck_report.txt
+             WARNINGSFILE=./warnings.txt
+             if test -f "$REPORTFILE"; then
+                # Filter innocuous warnings and write the remaining ones to another file.
+                # Note that you can add more warnings by adding it in the parenthesis,
+                # with "\|" in front of it. For example, "(missingIncludeSystem\|useStlAlgorithm\)"
+                sed 's/\[\(missingIncludeSystem\|internalAstError\|missingInclude\|ConfigurationNotChecked\|toomanyconfigs\)\]//g' "$REPORTFILE" > "$WARNINGSFILE"
+                # are there any remaining warnings?
+                if grep -qP '\[[a-zA-Z0-9]{5,}\]' "$WARNINGSFILE"; then
+                    # print the remaining warnings
+                    echo Warnings detected:
+                    echo ==================
+                    cat "$WARNINGSFILE" | grep -P '\[[a-zA-Z0-9]{5,}\]'
+                    # fail the job
+                    exit 1
+                else
+                    echo No warnings detected
+                fi
+             else
+                echo "$REPORTFILE" not found
+             fi
+```
+
 ### Input options
 
 | Option | Value | Description | Default |
